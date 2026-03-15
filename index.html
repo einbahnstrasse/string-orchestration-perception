@@ -1,0 +1,1839 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Designing at the Edge | Louis Goldford</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<!-- <link rel="stylesheet" href="dist/theme/beige.v02.css"> -->
+		<link rel="stylesheet" href="dist/theme/lg.beige.v01.css">
+		<link rel="stylesheet" href="dist/theme/velodroma-superwide-wakamaifondue.css">
+		<link rel="stylesheet" href="dist/theme/NeueDINReg-wakamaifondue.css">
+		<link rel="stylesheet" href="dist/theme/ghostly.text.v01.css">
+		<!-- <script src="https://d3js.org/d3.v7.min.js"></script> -->
+		<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-color="#f7f2d3">
+					<!-- <h1 class="r-fit-text">LOuIS goLdforD</h1>
+					<h2 class="r-fit-text">woRKs — 2023</h2> -->
+					<div class="velodroma-superwide-salt words word-1">
+						<span>L</span>
+						<span>O</span>
+						<span>u</span>
+						<span>I</span>
+						<span>S</span>
+						<span>&nbsp;</span>
+						<span>g</span>
+						<span>o</span>
+						<span>L</span>
+						<span>d</span>
+						<span>f</span>
+						<span>o</span>
+						<span>r</span>
+						<span>D</span>
+					  </div>
+					  <!-- <div class="velodroma-superwide-salt words word-2 r-fit-text">
+						<span>w</span>
+						<span>o</span>
+						<span>R</span>
+						<span>K</span>
+						<span>s</span>
+						<span>—</span>
+						<span>2</span>
+						<span>0</span>
+						<span>2</span>
+						<span>6</span>
+					  </div> -->
+					<div id="glitchy-date">
+						<p style="font-size: 1.5em; font-style: oblique;" class="--onum hero glitch layers movement paths" data-text="When the System Bends: How Designing at the Edge Strengthens our Musical Creations">When the System Bends:<br>How Designing at the Edge Strengthens our Musical Creations</p>
+						<p class="--onum hero glitch layers movement paths" data-text="Rollins College — Winter Park, FL — Feburary 19, 2026">Rollins College — Winter Park, FL — Feburary 19, 2026</p>
+					</div>
+					<div id="div-logos" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center;">
+						<img src="./assets/logos/music-department-masthead-crown-logo-cropped.transparent.png" alt="columbia-logo" width="300px" style="background:none; border:none; box-shadow:none; transform: translate(-1dvh, 0);">
+						<img src="./assets/logos/fulbright.france.logo.transparent.png" alt="fulbright-logo" width="100px" style="background:none; border:none; box-shadow:none;">
+						<img src="./assets/logos/ACTOR_logo_colour_fullname.png" alt="actor-logo" width="140px" style="background:none; border:none; box-shadow:none; transform: translate(0, -1dvh);">
+						<img src="./assets/logos/spat.ircam.logo.gif" alt="ircam-logo" width="100px" style="background:none; border:none; box-shadow:none; transform: translate(0, -0.5dvh);">
+					</div>
+					<aside class="notes">
+						Well first of all, thank you all for coming.  <br>  
+						It's an honor to be here. <br><br>
+						I'd like to tell you a few things about myself and then see what you think.<br>  
+						So let's get started...
+					</aside>
+				</section>
+
+		<section class="centered-media-slide">
+			<div class="regular-text --onum">
+				<div style="padding-bottom: 15px;">
+				<h4>Artists + Technology</h4>
+				</div>
+				<div class="media-row">
+				<div class="video-col">
+					<video
+					src="assets/video/luke.video.mp4"
+					controls
+					playsinline
+					preload="metadata"
+					></video>
+				</div>
+				<blockquote class="quote-col">
+					<p style="font-size: 100%;">“Every civilization will use a maximum level of technology available to it to make art.”</p>					
+					<p style="font-size: 100%;">“And it’s the responsibility of the artist <br><strong>to ask questions about what<br>that technology means</strong> <br>and how it reflects our culture.”</p>
+					<p style="font-size: 90%;"><em>—R. Luke DuBois, TED (2016)</em></p>
+				</blockquote>
+				</div>
+			</div>
+		</section>
+
+<!-- ========================================= -->
+<!-- INTRO: WHY “EDGE CASES” (GOULD) -->
+<!-- ========================================= -->
+
+<section>
+  <div class="regular-text --onum" style="width:100%;">
+    <h4 id="concerns-header">How to <em style="color: #43d37b;">Bend</em> Any System</h4>
+
+    <p class="fragment fade-in slightly-smaller" data-fragment-index="1" id="default-frag">
+      Software has <strong style="color: #4ea1ff;">default use cases:</strong> how it is <em>designed</em> to be used.
+    </p>
+
+    <p class="fragment fade-in slightly-smaller" data-fragment-index="2" id="edge-frag">
+    <strong style="color: #43d37b;">Edge cases</strong> <em>push</em> those defaults towards their limits...<br>— revealing what “normal use” hides.
+    </p>
+
+    <div id="echart-scatter"
+         style="display:block; width:100%; max-width:1100px; height:360px; margin-top:12px;"></div>
+  </div>
+
+	<script>
+	(function () {
+		const el = document.getElementById('echart-scatter');
+		if (!el || el.dataset.init === "1") return;
+		el.dataset.init = "1";
+
+		if (typeof window.echarts === "undefined") {
+		console.error("ECharts not found. Load echarts.min.js before this slide.");
+		return;
+		}
+
+		const chart = echarts.init(el);
+
+		const normal = [
+		[0.5, 0.75, "Commercial recording & mixing"],
+		[0.4, 2.4, "Trim silence"],
+		[1.0, 1.6, "Podcast edit"],
+		[1.3, 2.8, "Add reverb"],
+		[1.9, 1.5, "Mastering: Compression / limiter"],
+		[3.1, 2.4, "Quantize drums"],
+		[2.9, 1.9, "Bounce .WAV"],
+		[2.5, 2.9, "Vocal accompaniment"],
+		[3.6, 1.3, "Mix bus"],
+		[3.9, 2.2, "Sidechain compression"],
+		[4.1, 1.7, "EQ tweak"]
+		];
+
+		const outliers = [
+		[4.4,4.5,"Microtonal mockup"],
+		[4.3,3.5,'Film scoring "stems"'],
+		[4.6,2.9,"Record MIDI from\nother programs"],
+		[3.5,3.4,"Simulation of a\nlive performer"],
+		[3.8,5.2,"Orchestration Workbench"],
+		[4.5,4.,"Sound Design lab"],
+		[3.1,4,"Improvisational instrument"],
+		[3.4,4.7,"Click + Cue tracks"]
+		];
+
+		const normalColor = '#4ea1ff';
+		const outlierColor = '#43d37b';
+
+		// ----- Base option (AXES ALWAYS PRESENT, POINTS UPDATED LATER) -----
+		const base = {
+		animation: true,
+		animationDuration: 1000,
+		animationEasing: 'cubicOut',
+		animationDurationUpdate: 1000,
+		animationEasingUpdate: 'cubicOut',
+		title: {
+			text: 'Ways We Can Use Logic Pro',
+			left: 'center',
+			top: 0,
+			textStyle: {
+			fontSize: 24,
+			fontWeight: 500
+			}
+		},
+
+		textStyle: {
+			fontFamily: "'Optician Sans', sans-serif"
+		},
+
+		grid: { left: 70, right: 30, top: 20, bottom: 60 },
+
+		xAxis: {
+			min: 0, max: 5.5,
+			name: 'Stuff We Normally Do / How Far We’re Pushing Software →',
+			nameLocation: 'middle',
+			nameGap: 38,
+			nameTextStyle: {
+			fontSize: 20,
+			fontFamily: "'Optician Sans', sans-serif"
+			},
+			axisLabel: {
+			fontFamily: "'Optician Sans', sans-serif"
+			},
+			axisLine: { lineStyle: { opacity: 0.35 } },
+			axisTick: { show: false },
+			splitLine: { show: false }
+		},
+
+		yAxis: {
+			min: 0, max: 6,
+			name: 'Creative Shenanigans →',
+			nameLocation: 'middle',
+			nameGap: 45,
+			nameTextStyle: {
+			fontSize: 20,
+			fontFamily: "'Optician Sans', sans-serif"
+			},
+			axisLabel: {
+			fontFamily: "'Optician Sans', sans-serif"
+			},
+			axisLine: { lineStyle: { opacity: 0.35 } },
+			axisTick: { show: false },
+			splitLine: { show: false }
+		},
+
+		series: [
+			{
+			id: 'normalSeries',
+			name: 'Normal',
+			type: 'scatter',
+			data: [],
+			symbolSize: 11,
+			label: {
+				fontFamily: "'Optician Sans', sans-serif",
+				show: false,
+				formatter: (p) => p.data[2],
+				position: 'right',
+				opacity: 1,
+				fontSize: 11,
+				hideOverlap: true,
+			},
+			itemStyle: { color: normalColor, opacity: 0.85 }
+			},
+			{
+			id: 'outlierSeries',
+			name: 'Outliers',
+			type: 'scatter',
+			data: [],
+			symbolSize: 13,
+			label: {
+				fontFamily: "'Optician Sans', sans-serif",
+				show: false,
+				formatter: (p) => p.data[2],
+				position: 'right',
+				fontSize: 12,
+				opacity: 0.95,
+				hideOverlap: true,
+			},
+			itemStyle: {
+				color: outlierColor,
+				opacity: 0.95,
+				shadowBlur: 14,
+				shadowColor: 'rgba(0,0,0,0.25)'
+			}
+			}
+		]
+		};
+
+		chart.setOption(base);
+
+		// ----- Three-state update (MINIMAL CHANGE) -----
+		const defaultFrag = document.getElementById('default-frag');
+		const edgeFrag = document.getElementById('edge-frag');
+
+		// --- slide-in animation helpers ---
+		const shift = (data, dx, dy) => data.map(d => [d[0] + dx, d[1] + dy, d[2]]);
+		let prevState = -1;
+		let blueShown = false;
+		let greenShown = false;
+
+		function applyState() {
+		const dVis = defaultFrag && defaultFrag.classList.contains('visible');
+		const eVis = edgeFrag && edgeFrag.classList.contains('visible');
+
+		const state = eVis ? 2 : (dVis ? 1 : 0);
+
+		// base intended data
+		const normalFinal = (state >= 1) ? normal : [];
+		const outlierFinal = (state === 2) ? outliers : [];
+
+		// IMPORTANT: on first appearance, draw them at an offset first
+		const blueFirstAppear = (state >= 1 && !blueShown);
+		const greenFirstAppear = (state === 2 && !greenShown);
+
+		const normalStart = blueFirstAppear ? shift(normal, -0.6, 0.35) : normalFinal;
+		const outlierStart = greenFirstAppear ? shift(outliers, -0.6, 0.35) : outlierFinal;
+
+		chart.setOption({
+			series: [
+			{
+				id: 'normalSeries',
+				data: normalStart,
+				label: { show: state >= 1 },
+				itemStyle: { color: normalColor, opacity: (state === 2) ? 0.45 : 0.85 }
+			},
+			{
+				id: 'outlierSeries',
+				data: outlierStart,
+				label: { show: state === 2 },
+				itemStyle: {
+				color: outlierColor,
+				opacity: 0.95,
+				shadowBlur: 14,
+				shadowColor: 'rgba(0,0,0,0.25)'
+				}
+			}
+			]
+		}, { lazyUpdate: true });
+
+		// Now animate into place on next frame
+		if (blueFirstAppear) {
+			blueShown = true;
+			requestAnimationFrame(() => {
+			chart.setOption({
+				series: [{ id: 'normalSeries', data: normalFinal }]
+			}, { lazyUpdate: true });
+			});
+		}
+
+		if (greenFirstAppear) {
+			greenShown = true;
+			requestAnimationFrame(() => {
+			chart.setOption({
+				series: [{ id: 'outlierSeries', data: outlierFinal }]
+			}, { lazyUpdate: true });
+			});
+		}
+
+		// Allow replay when stepping backwards then forwards again
+		if (state < prevState) {
+			if (state < 1) blueShown = false;
+			if (state < 2) greenShown = false;
+		}
+		prevState = state;
+
+		chart.resize();
+		}
+
+		// Observe fragment class changes (Reveal toggles .visible)
+		const obsCfg = { attributes: true, attributeFilter: ['class'] };
+		if (defaultFrag) new MutationObserver(applyState).observe(defaultFrag, obsCfg);
+		if (edgeFrag) new MutationObserver(applyState).observe(edgeFrag, obsCfg);
+
+		// ----- The working resize robustness (unchanged) -----
+		const forceResize = () => {
+		requestAnimationFrame(() => {
+			chart.resize();
+			requestAnimationFrame(() => chart.resize());
+		});
+		};
+
+		if (typeof ResizeObserver !== "undefined") {
+		new ResizeObserver(() => chart.resize()).observe(el);
+		}
+		window.addEventListener('resize', () => chart.resize());
+
+		forceResize();
+		setTimeout(forceResize, 50);
+		setTimeout(forceResize, 250);
+
+		// Initial state (header only)
+		applyState();
+	})();
+	</script>
+</section>
+
+<section>
+  <div class="regular-text --onum">
+    <h4>Stephen Jay Gould</h4>
+	<figure id="gma" style="position: fixed; top: 0px; right: 0px;">
+		<img src="./assets/img/gould.v01.jpg" alt="Gould" width="200px" style="background:none; border:none; box-shadow:none;">
+		<!-- <figcaption class="figcap">Stephen Jay Gould</figcaption> -->
+	</figure>
+	<div class="slightly-smaller">
+		<p class="fragment">Gould (1941-2002) was a biologist who studied<br>species that were almost <em>comically specific</em>.</p>
+		<p class="fragment">He wrote about <strong><em style="color: #43d37b;">edge cases</em></strong> — organisms shaped by<br>extreme conditions, odd histories, and ecologies.</p>
+		<p class="fragment">Example: <strong style="color: #43d37b;">snails</strong> — whose shells preserve a record of tiny changes over long spans of time, which Gould studied in obsessive detail.</p>
+	</div>
+  </div>
+</section>
+
+<section>
+  <div class="regular-text --onum">
+    <h4>Snails... Really?!</h4>
+	<div class="slightly-smaller">
+		<p class="fragment">But the snail wasn’t the point. The <em>method</em> was...</p>
+		<p class="fragment">Gould’s studies of narrow subjects reveal <em>history at work</em>,<br>which <strong style="color: #43d37b;">changed how we understand <em>“the way things are.”</em></strong></p>
+		<p class="fragment">A <strong style="color: #43d37b;">specific case</strong> can expose <strong style="color: #4ea1ff;">what a typical case hides:</strong><br>limits, tradeoffs, path-dependence, and hidden assumptions.</p> 
+		<p class="fragment">The <em>narrow</em> made a <em>broader pattern</em> visible.</p>
+	</div>
+  </div>
+</section>
+
+<!-- ========================================= -->
+<!-- CIRCUIT BENDING -->
+<!-- ========================================= -->
+
+			<section>
+				<div class="regular-text --onum" style="padding-bottom: 15px;">
+					<h6>A Musical Example:</h6>
+					<h4>Circuit Bending</h4>
+				</div>
+				<div style="display: flex; gap: 40px; align-items: flex-start;">
+					<figure style="flex:1; text-align:center;">
+					<iframe style="width:100%; aspect-ratio:16/9;"
+						src="https://www.youtube.com/embed/lnXNm4hfrWs"
+						allowfullscreen>
+					</iframe>
+					<figcaption style="margin-top:10px; font-size:0.7em;">
+						<h6 style="color: #4ea1ff;">Normal Use</h6>
+					</figcaption>
+					</figure>
+					<figure style="flex:1; text-align:center;">
+					<iframe style="width:100%; aspect-ratio:16/9;"
+						src="https://www.youtube.com/embed/mFM_PT_7N1w"
+						allowfullscreen>
+					</iframe>
+					<figcaption style="margin-top:10px; font-size:0.7em;">
+						<h6 style="color: #43d37b;">Edge Case</h6>
+					</figcaption>
+					</figure>
+				</div>
+			</section>
+
+			<section>
+				<div class="regular-text --onum">
+				<div style="padding-bottom: 15px;">
+					<h4>Ethos of <em style="color: #43d37b;">Bending</em></h4>
+				</div>
+				<p class="fragment slightly-smaller">
+					Instrument building status quo: <em style="color: #4ea1ff;">“Define a goal first, then construct it.”</em>
+				</p>
+
+				<p class="fragment slightly-smaller">
+					Musical builders in the 1970s <strong>resisted</strong> this model...
+				</p>
+
+				<p class="fragment slightly-smaller">
+					and treated the design process as <strong style="color: #43d37b;">exploratory.</strong> 
+				</p>
+
+				<p class="fragment slightly-smaller">
+					<strong style="color: #43d37b;">Unexpected behaviors</strong> were not errors but <strong>opportunities</strong>.  
+				</p>
+
+				<p class="fragment slightly-smaller">
+					<strong style="color: #43d37b;">Deviation from an original plan</strong> was a <strong>strategy</strong> — <em>not a failure</em>.  
+				</p>
+				</div>
+			</section>
+
+			<section>
+				<div class="regular-text --onum">
+				<div style="padding-bottom: 15px;">
+					<h4>Ethos of <em style="color: #43d37b;">Bending</em></h4>
+				</div>
+				<blockquote class="slightly-smaller">
+					<p>“Bending’s try-anything extreme experimentalism can produce <strong style="color: #43d37b;">wonderful results never anticipated by the original designers</strong> of the device being bent.”</p>
+					<cite style="font-size: 80%;">—Nic Collins, Handmade Electronic Music</cite>
+				</blockquote>
+
+				</div>
+			</section>
+
+<!-- ========================================= -->
+<!-- DISCUSSION #1 -->
+<!-- ========================================= -->
+
+<section>
+  <div class="regular-text --onum">
+    <h4>Discussion</h4>
+	<div class="slightly-smaller">
+		<ul>
+			<li class="fragment">Ever used your voice / instrument in a way you were told <em>not</em> to?</li> 
+			<!-- <li class="fragment">What happened when you did?? :)</li> -->
+			<li class="fragment">Did the system resist? Did it reveal a hidden capacity?</li>
+			<li class="fragment">What have you been told your voice / instrument <em>“shouldn’t”</em> do?</li>
+			<!-- <li class="fragment">Have you ever broken a <em>“rule,”</em> yet discovered something useful?</li> -->
+			<li class="fragment">What becomes audible (or, visible)  when something is <em>pushed beyond its intended use?</em></li>
+		</ul>
+	</div>
+
+  </div>
+</section>
+
+<section>
+  <div class="regular-text --onum">
+    <h4>Reframing the DAW</h4>
+	<figure id="gma" style="position: fixed; top: 40px; right: 0px;" class="fragment" data-fragment-index="1">
+		<img src="./assets/img/logic-pro-x-10-3-screenshot-1200x751.jpg" alt="Logic Pro" width="300px" style="background:none; border:none; box-shadow:none;">
+	</figure>
+	<div style="font-size: 70%">
+    <p class="fragment" data-fragment-index="1">
+      The <strong>DAW</strong> (<strong>D</strong>igital <strong>A</strong>udio <strong>W</strong>orkstation; like Logic) is<br>often <span style="color: #4ea1ff;">treated as a recording studio</span> in software form.
+    </p>
+
+    <p class="fragment" data-fragment-index="2">
+      But structurally, it is <strong>a synchronization engine</strong>:
+      <br>where events are <em>aligned</em>, <em>layered</em>, <em>coordinated</em>, <br><em>mocked up</em>, and even <em>performed</em>.
+    </p>
+
+    <p class="fragment" data-fragment-index="3">
+      Producing recordings is just one possible use case.
+    </p>
+
+    <p class="fragment" data-fragment-index="4" style="color: #43d37b;">
+      <strong>What <em>else</em> would a powerful synchronization tool be useful for?</strong>
+    </p>
+
+	</div>
+  </div>
+</section>
+
+<section>
+	<div class="regular-text --onum">
+		<h4>Disclaimer</h4>
+		<p class="fragment">I’m not asking you to adopt a style or aesthetic...</p>
+		<p class="fragment">I’m interested in what we learn (as artists) using technology as <em>a <strong style="color: #43d37b;">playground</strong> for our imagination</em>.</p>
+		<p class="fragment">In such moments of <em>bending</em>, we often discover <br><strong style="color: #43d37b;">new ways of creating and organizing music.</strong></p>
+	</div>
+</section>
+
+<!-- ========================================= -->
+<!-- SIMULATION -->
+<!-- ========================================= -->
+
+<section class="simulation-slide">
+	<div class="regular-text --onum">
+		<h4 style="padding-bottom: 15px;">Simulation</h4>
+		  <img 
+				src="assets/img/simulation.v02.png"
+				alt="Musical simulation diagram"
+				class="corner-image"
+			>
+		<div class="slightly-smaller">
+			<p class="fragment">A DAW can function as a <em>simulation space</em>:</p>
+			<p class="fragment"><strong style="color: #43d37b;">A testing ground for your musical ideas:</strong><br>nuanced timing, timbre, tuning, orchestration, rhythmic coordination, or melodic balance...</p>
+			<p class="fragment"><em>before</em> committing your ideas to performance.</p>
+			<p class="fragment">Example: use Logic to <em>simulate the performance of a live musician</em> in a coordinated score/piece.</p>
+		</div>
+	</div>
+</section>
+
+<section data-background-video="./assets/video/sopseso.player.piano.section.v01.mp4">
+</section>
+
+<section class="simulation-slide">
+	<div class="regular-text --onum">
+		<h4 style="padding-bottom: 15px;">Anti—Technology?</h4>
+		  <img 
+				src="assets/img/simulation.v02.png"
+				alt="Musical simulation diagram"
+				class="corner-image"
+			>
+		<div class="slightly-smaller">
+			<p class="fragment">If your musical goal is to work with purely acoustic or instrumental sound,</p>
+			<p class="fragment">and not to manipulate electronic sound within your own artistic practice,</p>
+			<p class="fragment"><em>Logic-as-simulator</em> is just the use case for you!</p>
+		</div>
+	</div>
+</section>
+
+<!-- ========================================= -->
+<!-- DISCUSSION #2 -->
+<!-- ========================================= -->
+
+<section>
+  <div class="regular-text --onum">
+    <h4>Discussion</h4>
+	<div class="slightly-smaller">
+		<ul>
+			<li class="fragment">Have you ever been fooled by a simulation — in music or elsewhere? What gave it away (or didn’t)?</li> 
+			<li class="fragment">At what point does simulation stop being a tool and start becoming a substitute?</li>
+			<li class="fragment">Where else do we simulate humans in software? (Games? Film CGI? Customer service bots? Flight simulators? Medical training?)</li>
+		</ul>
+	</div>
+</section>
+
+<!-- ========================================= -->
+<!-- CUE TRACKS -->
+<!-- ========================================= -->
+
+		<section class="simulation-slide">
+			<div class="regular-text --onum">
+				<h4 style="padding-bottom: 15px;">Cue Tracks</h4>
+				<img 
+						src="assets/img/cue.tracks.v01.png"
+						alt="Cue tracks"
+						class="corner-image2"
+					>
+				<div style="font-size: 70%;">
+					<p class="fragment">As a coordination engine, we can also use a<br>DAW to align precisely timed musical events.</p>
+					<p class="fragment">Events can be played by live sound sources<br>— with or without electronics or synths.</p>
+					<p class="fragment">We can accomplish this with some tracks<br>functioning as <em>cues</em> that performers follow.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="simulation-slide">
+			<div class="regular-text --onum">
+				<h4 style="padding-bottom: 15px;">Cue Tracks</h4>
+				<img 
+						src="assets/img/cue.tracks.v01.png"
+						alt="Cue tracks"
+						class="corner-image2"
+					>
+				<div class="slightly-smaller">
+					<p class="fragment">But instead of a <strong style="color: #4ea1ff;">regular tempo grid<br>(a “click track”),</strong> let’s align to<br><strong style="color: #43d37b;">irregular tempo cues.</strong></p>
+					<p class="fragment">Musical events can be <strong style="color: #4ea1ff;">pitched “notes”</strong><br>but can also be <strong style="color: #43d37b;">personal playing techniques.</strong></p>
+					<p class="fragment">By using a DAW this way, we <strong style="color: #43d37b;">let technology manage complexity for us.</strong></p>
+				</div>
+			</div>
+		</section>
+
+		<section class="simulation-slide">
+			<div class="regular-text --onum">
+				<h4 style="padding-bottom: 15px;">Live Performance</h4>
+				<!-- <iframe width="672" height="378" src="assets/video/shifting.signifier.v01.performance.mp4" title="Shifting Signifier performance" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+				 <video
+					width="672"
+					height="378"
+					controls
+					preload="metadata"
+					playsinline
+					>
+					<source src="assets/video/shifting.signifier.v01.performance.mp4" type="video/mp4">
+				</video>
+			</div>
+		</section>
+
+		<section>
+			<div class="regular-text --onum">
+				<h4 style="padding-bottom: 15px;">Is this Magic?</h4>
+				<!-- <img 
+						src="assets/img/cue.tracks.v01.png"
+						alt="Cue tracks"
+						class="corner-image2"
+					> -->
+				<div class="slightly-smaller">
+					<p class="fragment">There is <em>not a shred</em> of electronically-produced sound in this piece!</p>
+					<p class="fragment">Yet, the performers achieve <strong style="color: #43d37b;">“electronic precision...”</strong></p>
+					<p class="fragment"><em>without</em> complex notation. They do it naturally, <strong style="color: #43d37b;"><em>without</em> a score.</strong></p>
+					<p class="fragment">Now, let’s check out the <em>cue tracks</em> the musicians <strong style="color: #43d37b;">listen to as they play,</strong> all clocked from a DAW just like Logic...</p>
+				</div>
+			</div>
+		</section>
+
+		<section data-background-video="./assets/video/shifting.signifier.click.track.demo.v01.mp4">
+		</section>
+
+<!-- ========================================= -->
+<!-- DISCUSSION #3 -->
+<!-- ========================================= -->
+
+<section>
+  <div class="regular-text --onum">
+    <h4>Discussion</h4>
+	<div class="slightly-smaller">
+		<ul>
+			<li class="fragment">What assumptions does a click track make about music?</li> 
+			<li class="fragment">If a cue doesn’t have to be steady, what can it be?</li>
+			<li class="fragment">What makes a click track feel robotic?</li>
+			<li class="fragment">Could irregular timing <em>feel more human?</em></li>
+			<li class="fragment">Can technology <em>support</em> expressivity instead of <em>suppressing</em> it?</li>
+			<li class="fragment">Imagine: you design a cue track for yourself.<br>What kind of cues would feel most intuitive?</li>
+		</ul>
+	</div>
+</section>
+
+<!-- ========================================= -->
+<!-- ORCHESTRATION WORKBENCH — LEFT OFF HERE!! -->
+<!-- ========================================= -->
+
+		<section>
+			<div class="regular-text --onum">
+				<h4 style="padding-bottom: 15px;">Remember Prolongation?</h4>
+				<!-- <div style="text-align: center;">
+	
+					<img 
+						src="assets/img/Secondary-Dominant-Example-2048x645.png"
+						alt="Orchestration Workbench"
+						style="width:600px; max-width:100%; display:block; margin:0 auto;"
+					>
+
+					<audio 
+						controls 
+						style="width:300px; margin-top:15px;"
+					>
+						<source src="assets/audio/Secondary-Dominant-Example.mp3" type="audio/mpeg">
+					</audio>
+
+				</div> -->
+
+				<div style="
+					display: flex; 
+					justify-content: center; 
+					align-items: center; 
+					gap: 40px;
+				">
+
+					<img 
+						src="assets/img/Secondary-Dominant-Example-2048x645.png"
+						alt="Orchestration Workbench"
+						style="width:600px; max-width:100%;"
+					>
+
+					<audio 
+						controls 
+						style="width:260px;"
+					>
+						<source src="assets/audio/Secondary-Dominant-Example.mp3" type="audio/mpeg">
+					</audio>
+
+				</div>
+
+				<div style="font-size: 70%;">
+					<p class="fragment">
+					In tonal harmony, a <strong>secondary dominant</strong> <em>expands (prolongs)</em> a sonority.
+					</p>
+
+					<p class="fragment">
+					We temporarily treat another chord <em>as if it were tonic</em>. We make it <em>last longer</em> — not by repeating the chord, but by extending its gravitational field.
+					</p>
+
+					<p class="fragment" style="color:#43d37b;">
+					<strong>What if we did this with timbre?</strong>
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="simulation-slide">
+			<div class="regular-text --onum">
+				<h4 style="padding-bottom: 15px;">What is a Chord, Anyway?</h4>
+				<img 
+						src="assets/img/orchestration.workbench.v01.png"
+						alt="Orchestration Workbench"
+						class="corner-image2"
+					>
+				<div class="slightly-smaller">
+					<p class="fragment">
+					In a traditional sense, a <strong>chord</strong> is:
+					</p>
+
+					<ul class="fragment" style="color: #4ea1ff;">
+						<li class="fragment">multiple pitches</li>
+						<li class="fragment">same instrument</li>
+						<li class="fragment">same dynamic</li>
+						<li class="fragment">aligned in time</li>
+						<li class="fragment">equal <em>ontological</em> status...</li>
+						<li class="fragment">(categorically, the <em>same kind of thing</em>)</li>
+					</ul>
+
+					<p class="fragment">
+					But in a DAW…
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="centered-media-slide">
+			<div class="regular-text --onum">
+				<div style="padding-bottom: 15px;">
+					<h4>Spectral Fusion</h4>
+				</div>
+				<div class="media-row">
+					<div class="video-col">
+						<video
+							src="assets/video/TrumpetBuildup_1PartialataTime.mp4"
+							controls
+							playsinline
+							preload="metadata"
+							style="width:100%;"
+						></video>
+					</div>
+					<div class="quote-col" style="font-size: 55%;">
+						<ul>
+							<li class="fragment">Multiple sounds can be <em>carefully balanced</em> and perceptually <em>“fused”</em> into<br><strong style="color:#43d37b;">a unified sonic body.</strong></li>
+							<li class="fragment">The ear parses a <em style="color:#43d37b;">single timbral percept,</em> rather than <em style="color: #4ea1ff;">discrete layers.</em></li>
+							<li class="fragment">Harmony transforms into <strong><em style="color:#43d37b;">sound color...</em></strong></li>
+							<li class="fragment" style="color: #4ea1ff;">unlike <strong>chords</strong>, which are designed as <em>clearly stratified pitch structures</em>.</li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="simulation-slide">
+			<div class="regular-text --onum">
+				<h4 style="padding-bottom: 15px;">In a DAW...</h4>
+				<img 
+						src="assets/img/orchestration.workbench.v01.png"
+						alt="Orchestration Workbench"
+						class="corner-image2"
+					>
+				<div class="slightly-smaller">
+					<p class="fragment" >
+					a chord can be a <strong style="color:#43d37b;">spectral fusion.</strong>
+					</p>
+
+					<p class="fragment slightly-smaller">
+					Our “chord” can be a <em>timbre,</em> comprised of <strong>audio samples</strong> rather than individual pitches representing: 
+					</p>
+
+					<ul class="slightly-smaller">
+						<li class="fragment">pitched tones</li>
+						<li class="fragment">noise bands</li>
+						<li class="fragment">filtered field recordings</li>
+						<li class="fragment">breath + interstitial sounds</li>
+						<li class="fragment">resonances</li>
+						<li class="fragment" style="color:#43d37b;"><strong>fused</strong> into a <em>single perceptual body.</em></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section class="simulation-slide">
+			<div class="regular-text --onum">
+				<h4 style="padding-bottom: 15px;">Timbre Etude</h4>
+				<img 
+						src="assets/img/orchestration.workbench.v01.png"
+						alt="Orchestration Workbench"
+						class="corner-image2"
+					>
+				<div style="font-size: 70%;">
+					<p class="fragment">
+						This assignment asks you to create
+						a <strong>composite timbre</strong> —
+						a single emergent sonic entity.
+						Like building a chord whose “notes” are entire sound sources.
+						</p>
+
+						<div class="fragment">
+						<p>We will:</p>
+						<ul>
+							<li>balance spectra</li>
+							<li>sculpt frequency ranges</li>
+							<li>automate fusion and separation</li>
+							<li>control spatial depth</li>
+						</ul>
+						</div>
+
+						<p class="fragment" >
+						This is <strong style="color:#43d37b;">orchestration</strong> — before performers ever enter the room.
+						Logic / your DAW becomes a <strong><em style="color:#43d37b;">workbench</em></strong> for redefining what harmony is.
+						</p>			
+					</div>
+			</div>
+				</section>
+
+				<section class="simulation-slide">
+					<div class="regular-text --onum">
+						<h4 style="padding-bottom: 15px;">Timbre Etude</h4>
+						<!-- <img 
+								src="assets/img/sound-files-download-QR.png"
+								alt="Orchestration Workbench"
+								class="corner-image2"
+							> -->
+						<figure class="qr-figure">
+							<img 
+								src="assets/img/sound-files-download-QR.png"
+								alt="QR code"
+							>
+							<figcaption>Download sounds here</figcaption>
+						</figure>
+						<div style="font-size: 70%;">
+							<p class="fragment">
+								Create
+								a <strong>composite timbre:</strong>
+								a single emergent sonic entity.
+								Like building a chord whose “notes”<br>are entire sound sources.
+								</p>
+
+								<div class="fragment">
+								<p>We will:</p>
+								<ul>
+									<li>balance spectra</li>
+									<li>sculpt frequency ranges</li>
+									<li>automate fusion and separation</li>
+									<li>control spatial depth</li>
+								</ul>
+								</div>
+
+								<p class="fragment" >
+								This is <strong style="color:#43d37b;">orchestration</strong> — before performers ever enter the room.
+								Logic / your DAW becomes a <strong><em style="color:#43d37b;">workbench</em></strong> for redefining what harmony is.
+								</p>			
+							</div>
+					</div>
+				</section>
+
+								<section class="simulation-slide">
+					<div class="regular-text --onum">
+						<h4 style="padding-bottom: 15px;">Timbre Etude</h4>
+						<!-- <img 
+								src="assets/img/sound-files-download-QR.png"
+								alt="Orchestration Workbench"
+								class="corner-image2"
+							> -->
+						<figure class="qr-figure">
+							<img 
+								src="assets/img/sound-files-download-QR.png"
+								alt="QR code"
+							>
+							<figcaption>Download sounds here</figcaption>
+						</figure>
+						<div style="font-size: 70%;">
+							<p class="fragment">
+								Stack each sound (simultaneously) on its own track.
+							</p>
+
+							<p class="fragment">
+								Consider strategies to <em>balance</em> and <em>blend</em>...
+							</p>
+
+							<p class="fragment">
+								Volume? Automation? Pan (space)? EQ?  
+							</p>
+
+							<p class="fragment">
+								Make these sounds <em>fuse</em> into a <em>single timbral percept.</em>
+							</p>
+
+							<p class="fragment">
+								<strong>Create your own!</strong> Use your own recorded sounds, or audio samples from one of the website libraries.
+							</p>
+
+							</div>
+					</div>
+				</section>
+
+
+<!-- ========================================= -->
+<!-- DISCUSSION #3 -->
+<!-- ========================================= -->
+
+<section>
+  <div class="regular-text --onum">
+    <h4>Discussion</h4>
+	<div class="slightly-smaller">
+		<ul>
+			<li class="fragment">At what point does a blend stop sounding like layers and start sounding like a single object?</li> 
+			<li class="fragment">Is complete fusion desirable — or is tension between fusion and separation more interesting?</li>
+			<li class="fragment">Do spectral balance and DAW automation resemble voice-leading?</li>
+			<li class="fragment">Is your composite timbre a “sketch,” or is this an already-finished orchestration?</li>
+		</ul>
+	</div>
+
+  </div>
+</section>
+
+<section>
+  <div class="regular-text --onum">
+    <h4>Thank You!</h4>
+  </div>
+</section>
+
+<!-- ========================================= -->
+<!-- BIO / WORK SIDE OF THE PRESENTATION -->
+<!-- ========================================= -->
+
+				<!-- <section>
+					<h3 style="font-size: 100%;">Header Idea No. 3</h3>
+					<p class="--onum --dlig">v|^ /> -> |_> |v |^ <-> <_| <\ <- ^|v <br> This is a paragraph 1234567890!</p>
+					<p class="--ss05">⓿ ❶ ❷ ❸ ❹ ❺ ❻ ❼ ❽ ❾ <br> 🄋 ➀ ➁ ➂ ➃ ➄ ➅ ➆ ➇ ➈</p>
+				</section> -->
+				<!-- <section>
+					<h3 style="font-size: 100%;">Header Idea No. 3</h3>
+					<p class="--onum">This is a paragraph 1234567890!</p>
+					<p class="--ss05">⓿ ❶ ❷ ❸ ❹ ❺ ❻ ❼ ❽ ❾ <br> 🄋 ➀ ➁ ➂ ➃ ➄ ➅ ➆ ➇ ➈</p>
+				</section> -->
+
+				<section data-background-video="./assets/video/spatGris.test.v02.mov" data-background-video-loop data-background-video-muted>
+					<!-- <img src="./assets/img/prosody.section.v01.png" alt="prosody" style="background:none; border:none; box-shadow:none; transform: translate(-1dvh, 0);"> -->
+					<!-- <p style="font-size: smaller;">Vocal Formant Chords: scored for violin, cello, and piano</p> -->
+				</section>
+
+
+				<!-- 2. Biographical highlights -->
+				<section data-auto-animate>
+					<figure id="gma" style="position: fixed; top: 0px; left: 0px;">
+						<img src="./assets/img/me.and.grandma.piano.jpg" alt="me-and-grandma" width="600px" style="background:none; border:none; box-shadow:none;">
+					</figure>
+					<h3 style="position: fixed; top: -1000px; left: 0px;">bio</h3>
+					<aside class="notes">
+						...
+					</aside>
+				</section>
+				<section data-auto-animate data-background-gradient="radial-gradient(#f7f2d3, #F0BE4F)">
+					<figure id="gma" style="position: fixed; top: 0px; right: 0px;">
+						<img src="./assets/img/me.and.grandma.piano.jpg" alt="me-and-grandma" width="400px" style="background:none; border:none; box-shadow:none;">
+						<figcaption class="figcap">Grandma was pretty great.</figcaption>
+					</figure>
+					<h3 style="position: fixed; top: 0px; left: 0px;">bio</h3>
+					<ul id="bio-list" class="--onum" style="font-size: 0.65em">
+						<li class="fragment fade-left" data-notes="First of all, I'm from St. Louis, Missouri.">Raised in <span class="bold-emph">St. Louis</span>, Missouri</li>
+						<li class="fragment fade-left" data-notes="where, as a kid, I studied piano, woodwind instruments, improvisation, composition, and arranging<br><br>I was always trying to figure out how to play what I heard on TV, in movies, and videogames.">Studied piano, saxophone, flute, clarinet, <span class="bold-emph">improvisation</span>, composition, and arranging</li>
+						<li class="fragment fade-left" data-notes="Eventually, I earned bachelor's degrees in music composition & economics">Undergraduate degrees in <span class="bold-emph">Composition</span> and <span class="bold-emph">Economics</span></li>
+						<li class="fragment fade-left" data-notes="Weirdly enough, I fondly remember those “Econ Days”<br><br>As it reads, this got me thinking in terms of trends, models, forecasting, data visualization & sonification.<br><br>And I began to wonder how this was related to my musical interests...">My <em>“Econ Days”</em> — inspired my thinking in terms of <span class="bold-emph">statistical</span> trends, models, forecasting, data visualization & sonification</li>
+					</ul>
+					<aside class="notes">
+						...
+					</aside>
+				</section>
+				<section data-auto-animate data-background-gradient="radial-gradient(#F8EFE0, #605D4E)">
+					<figure id="gma" style="position: fixed; top: 0px; left: 0px;">
+						<img src="./assets/img/fd.jpg" alt="with-fd" width="400px" style="background:none; border:none; box-shadow:none;">
+					</figure>
+					<aside class="notes">
+						...
+					</aside>
+				</section>
+				<section data-auto-animate data-background-gradient="radial-gradient(#F8EFE0, #605D4E)">
+					<h5 style="position: fixed; top: 40vh; right: 0vw;">TAIPEI, Taiwan</h5>
+					<figure id="gma" style="position: fixed; top: 0px; left: 0px;">
+						<img src="./assets/img/fd.jpg" alt="with-fd" width="400px" style="background:none; border:none; box-shadow:none; position: relative; top: 0; left: 0;">
+						<img src="./assets/img/st.jpg" alt="me-and-st" width="500px" style="background:none; border:none; box-shadow:none; position: absolute; top: 350px; left: 200px;">
+				</figure>
+				<aside class="notes">
+					I sought a more varied musical experience than I was getting directly after my undergraduate years, and this resulted... (in a chapter...)
+				</aside>
+				</section>
+				<section data-auto-animate data-background-gradient="radial-gradient(#F8EFE0, #605D4E)">
+					<figure id="gma" style="position: fixed; top: 0px; right: 0px;">
+						<img src="./assets/img/fd.jpg" alt="with-fd" width="400px" style="background:none; border:none; box-shadow:none; position: relative; top: 0; left: 0;">
+						<img src="./assets/img/st.jpg" alt="me-and-st" width="400px" style="background:none; border:none; box-shadow:none; position: absolute; top: 350px; right: 6px;">
+						<figcaption class="figcap"><span class="arrows --dlig"></span>with Flâneur Daguerre — with Sabu Toyozumi <span class="arrows --dlig"></span></figcaption>
+					</figure>
+					<h5 style="position: fixed; top: 0px; left: 0px;">TAIPEI, Taiwan</h5>
+					<ul id="bio-list" class="--onum" style="font-size: 0.65em">
+						<li data-notes="in a chapter of my life spent in Taiwan, where I began to put things together and figure out what I was after, musically." class="fragment fade-left">2009-2012</li>
+						<li data-notes="Principally, I worked in Asia as a saxophonist while writing pieces and pursuing my compositional path.<br><br>However, there weren't so many classically-trained musicians to collaborate with around that time." class="fragment fade-left">Primarily worked as a freelance <span class="bold-emph">saxophonist</span></li> 
+						<li data-notes="So, in Taipei I started an experimental improvising ensemble called <em>Flâneur Daguerre</em>.<br><br>It was essentially a Mingus Jazz Workshop-style group that developed ideas around the philosophies of Walter Benjamin dealing with cultural memory and collage." class="fragment fade-left">Founded experimental improvising <span class="bold-emph">ensemble</span> <em>Flâneur Daguerre</em></li>
+						<li data-notes="At that time I also fostered collaborations with Taiwan's jazz, free improvisation, rap, and hip hop musicians" class="fragment fade-left">Fostered <span class="bold-emph">collaborations</span> within Taiwan's richly diverse music scene: jazz, free improvisation, rap, and hip hop musicians</li> 
+					</ul>
+					<aside class="notes">
+						...
+					</aside>
+				</section>
+				<section data-auto-animate data-background-gradient="radial-gradient(#F8EFE0, #605D4E)">
+					<figure id="gma" style="position: fixed; top: 0px; right: 0px;">
+						<img src="./assets/img/fd.jpg" alt="with-fd" width="400px" style="background:none; border:none; box-shadow:none; position: relative; top: 0; left: 0;">
+						<img src="./assets/img/st.jpg" alt="me-and-st" width="400px" style="background:none; border:none; box-shadow:none; position: absolute; top: 350px; right: 6px;">
+						<figcaption class="figcap"><span class="arrows --dlig"></span>with Flâneur Daguerre — with Sabu Toyozumi <span class="arrows --dlig"></span></figcaption>
+					</figure>
+					<h5 style="position: fixed; top: 0px; left: 0px;">TAIPEI, Taiwan</h5>
+					<ul id="bio-list" class="--onum" style="font-size: 0.65em">
+						<li class="fade-left">First pieces with <span class="bold-emph">real-time</span> electronics<br>in MaxMSP & Supercollider</li>
+						<li data-notes="while learning studio and post-production techniques in a number of early recording sessions" class="fragment fade-left">Learned studio <span class="bold-emph">recording</span> and post-production techniques</li>
+						<li data-notes="And these led to my first pieces for acoustic instruments based on the synthesis processes and algorithms that spoke to my, shall we say, idiosyncratic sensibilities." class="fragment fade-left">First pieces for acoustic instruments based on synthesis processes & <span class="bold-emph">algorithms</span></li>
+					</ul>
+					<aside class="notes">
+						Eventually, I produced my first notated pieces with real-time electronics
+					</aside>
+				</section>
+				<section data-background-gradient="radial-gradient(#F8EFE0, #51586A)">
+					<section data-auto-animate>
+						<div>
+							<figure id="gma" style="position: fixed; top: 300px; right: 0px;">
+								<img src="./assets/img/me.cu.v01.jpg" alt="at-cu" width="400px" style="background:none; border:none; box-shadow:none; position: relative; top: 0; left: 0;">
+							</figure>
+							<h6 class="fragment fade-down" style="position: fixed; left: 0px;">Masters</h6>
+							<ul id="bio-list" class="--onum" style="font-size: 0.65em">
+								<li data-notes="These were really the formative years in Taiwan that got me ready to return to academic life in the US..." class="fragment fade-left">2012-2015</li> 
+								<li data-notes="where I developed my vocabulary of expressive playing techniques," class="fragment fade-left">Expanded vocabulary of playing techniques</li> 
+								<li data-notes="and improved my work with real-time electronics, mostly in MaxMSP." class="fragment fade-left">Gained facility with real-time electronics</li> 
+								<li data-notes="However, musically, my focus was shifting into an area that required I develop facility with with <b>“offline”</b> computer-assisted compositional tools;<br><br>and that is to say, tools which assist in formal planning and in the generation of initial sonorities and rhythms." class="fragment fade-left">Focused on <span class="bold-emph">offline</span> synthesis techniques <br> and <em>computer-assisted composition</em> (CAO)</li> 
+								<li data-notes="Soon, this led to my first pieces of <b>mixed music</b>, in which a real-time score based on this formal planning could be executed by an ensemble, and simultaneously, carefully synchronized with electronic sounds and other media." class="fragment fade-left">First pieces of <span class="bold-emph">mixed music</span></li> 
+							</ul>
+						</div>
+						<aside class="notes">
+							...
+						</aside>
+					</section>
+					<section data-auto-animate>
+						<div>
+							<figure id="gma" style="position: fixed; top: 0px; right: 0px;">
+								<img src="./assets/img/me.cu.v01.jpg" alt="at-cu" width="400px" style="background:none; border:none; box-shadow:none; position: relative; top: 0; left: 0;">
+							</figure>
+							<h6 class="fade-down" style="position: fixed; left: 0px;">Doctorate</h6>
+							<ul id="bio-list" class="--onum" style="font-size: 0.65em">
+								<li data-notes="Although I'm literally on the brink of finishing, these last few years have really given me time to experiment, reflect, develop, and determine a best workflow." class="fragment fade-left">2016-2024</li> 
+								<li data-notes="So, I would summarize thsee years as the continued pursuit of a personal, timbral language focusing on temporal resolution and microtiming." class="fragment fade-left">Continued pursuit of a personal,<br> timbral language focusing on temporal resolution and <span class="bold-emph">microtiming</span></li> 
+								<li data-notes="Taking a year to finish my <em>Cursus</em> at IRCAM really aided in this effort, as I worked with mathematicians and developers to fine-tune my understanding and approach." class="fragment fade-left">IRCAM <em>Cursus</em> in 2018-2019</li>
+								<li data-notes="Returning home meant teaching and composing, and I'm happy to have developed curriculum especially for our <em>Computer Music Center.</em>" class="fragment fade-left">Teaching Fellow at Columbia University’s<br><em>Computer Music Center</em></li> 
+								<li data-notes="In Paris, I also got acquainted with Carmine Cella, who's now at UC-Berkeley, for whom I worked on some pedagogical materials for his automatic orchestratoin software." class="fragment fade-left">Worked with Carmine Cella on his <em>Orchidea</em> software for computer-assisted orchestration</li> 
+								<li data-notes="More recently, I, along with colleagues in the ACTOR Project out of Montreal were awarded a grant to conduct timbral perception research on vocal perception within instrumental musical repertoire.<br><br>This will result in new work for the New York-based trio <em>Longleash</em>." class="fragment fade-left">Research-Creation Grant from the ACTOR timbral research project (McGill University)</li> 
+								<!-- <li class="fragment fade-left">At Columbia — continued pursuit of a personal, timbral language heavily relying on precision in time. Teaching in our Computer Music Center. Membership in the ACTOR timbral research group out of Montreal, working with Carmine Cella on his <em>Orchidea</em> software package for assisted orchestration.</li> -->
+								<!-- <li class="fragment fade-left">At the City University of New York (CUNY) — I serve as Adjunct Lecturer in Emerging Media Technology, teaching courses in computer programming as well as spatialized music & sound for VR.</li> -->
+							</ul>
+						</div>
+						<aside class="notes">
+							...
+						</aside>
+					</section>
+				</section>
+
+
+				<!-- </section> -->
+				<!-- 3. Musical Concerns -->
+				<section>
+					<section>
+						<div id="concerns-header">
+							<h4 id="concerns-header">Musical Concerns</h4>
+						</div>
+					</section>
+					<section>
+						<div id="concerns-header">
+							<h4 id="concerns-header">Psychoacoustics</h4>
+							<ul id="bio-list" style="font-size: 0.75em">
+								<!-- <li class="fragment fade-left"><span class="bold-emph">psychoacoustics</span> -->
+									<ul>
+										<!-- <li class="fragment fade-left">perception research</li> -->
+										<li class="fragment fade-left">auditory <span class="bold-emph">illusion</span></li>
+										<ul>
+											<li class="fragment fade-left" style="font-size: 0.75em;">when the brain is convinced it hears a sound that isn't physically present</li>
+										</ul>
+										<li class="fragment fade-left"><span class="bold-emph">fusion</span> of sonic constituents</li>
+										<ul>
+											<li class="fragment fade-left" style="font-size: 0.75em;">blending of multiple sound sources into a single, unified sonic event or timbre</li>
+										</ul>
+										<li class="fragment fade-left">sound <span class="bold-emph">morphologies</span></li>
+										<ul>
+											<li class="fragment fade-left" style="font-size: 0.75em;">how we represent or describe the evolving shapes and structures of sounds</li>
+										</ul>
+
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</section>
+
+									<!-- EMERGENCE -->
+				<section data-background-color="#f7f2d3">
+					<div class="words word-1">
+						<span>E</span>
+						<span>m</span>
+						<span>e</span>
+						<span>r</span>
+						<span>g</span>
+						<span>e</span>
+						<span>n</span>
+						<span>c</span>
+						<span>e</span>
+						</div>
+					<div>
+						<!-- <h4 class="fragment fade-down">Emergence</h4> -->
+						<!-- <ul id="bio-list" style="font-size: 0.65em">
+							<li class="fragment fade-left">formation of new topologies for <b>emergent phenomena in music</b>: within complex, aggregate sonorities and textures   
+								<ul>
+									<li class="fragment fade-left"><em>How do we reduce the complexity of continuous and irrationally “fluid” rhythms, for example, to reproduce its idiosyncratic sense of motion in instrumental writing...</em></li>
+									<li class="fragment fade-left"><em>...to promote readability among musicians...</em></li>
+									<li class="fragment fade-left"><em>...while preserving the integrity of the emergent musical material; its textural and timbral properties, etc.?</em></li>
+								</ul>
+							</li> -->
+							<!-- <li class="fragment fade-left">pursuit of a practical symbolic solution for representing irrationally <em>“fluid”</em> rhythms</li> -->
+						<!-- </ul> -->
+					</div>
+				</section>
+
+				<!-- <section>
+					<p>“Insofar as [music] is understood as <b>blocks</b>—regardless of the processes that may have placed the blocks in their positions—the operative metaphors are <em>structure</em>, <em>architecture</em>: <em>static</em> metaphor.”</p>  
+					<p>—Joshua Banks Mailman,</p> 
+					<p><em>Temporal Dynamic Form in Music</em></p> 
+				</section> -->
+
+				<!-- <section> -->
+					<!-- <p>“That there is nothing extraordinary about this approach to form (dividing the piece into sections: the <b>architectonic approach</b>) is entirely the point: the architectonic approach to form is the default for most musicians, composers, and music scholars. <b>Dynamic approaches to form</b> have not been absorbed into the mainstream enough to challenge the default status...”</p> -->
+					<!-- <p>“...the <b>architectonic approach to form</b> [i.e., dividing a piece into sections] is the default for most musicians [...].</p>  -->
+					<!-- <p><b>Dynamic approaches to form</b> have not been absorbed into the mainstream enough to challenge the default status...”</p> -->
+					<!-- <p>—Joshua Banks Mailman,</p>  -->
+					<!-- <p><em>Temporal Dynamic Form in Music</em></p>  -->
+				<!-- </section> -->
+
+				<section>
+					<img src="./assets/img/gestalt.png" alt="gestalt" style="background:none; border:none; box-shadow:none; transform: translate(-1dvh, 0);">
+					<p style="font-size: smaller;">source: <em>Gestalt Principles in UX Design</em>, Medium.com</p>
+				</section>
+
+				<section>
+					<h4 id="concerns-header">Gestalt</h4>
+					<p>the sensation of a <b>whole</b> modeled as a clear <b>sum</b> of perceivable component parts, or “<em>constituents</em>,” that share properties with some totality</p>
+				</section>
+
+				<section>
+					<p>“<b>Emergence</b>, unlike the <em>gestalt</em>, refers to a property’s [...] <em>statistical change over time</em>, and therefore lends itself to <em>computational analysis</em> and a <b>dynamic conception of musical form</b>, rather than a traditional representation of musical form as a <b>static</b> and unchanging or monolithic entity...”</p>
+					<p>—Louis Goldford,</p> 
+					<p><em>Emergence in the Music of<br>Pierluigi Billone and Georges Aperghis</em></p> 
+				</section>
+
+
+				<section>
+					<img src="./assets/img/goldford.avis9.png" alt="gestalt" width="800px" style="background:none; border:none; box-shadow:none; transform: translate(-1dvh, 0);">
+					<p style="font-size: smaller;">source: Goldford, <em>Emergence in the Music of Pierluigi Billone and Georges Aperghis</em>, DMA diss.</p>
+				</section>
+
+				<!-- <section>
+					<img src="./assets/img/mailman.clumps.png" alt="gestalt" height="500px" style="background:none; border:none; box-shadow:none; transform: translate(-1dvh, 0);">
+					<p style="font-size: smaller;">source: Mailman, <em>Temporal Dynamic Form in Music</em>, PhD diss.</p>
+				</section> -->
+
+				<section data-background-video="./assets/video/slow-motion-swirling-white-smoke.v03.darker.mp4" data-background-video-loop data-background-video-muted>
+					<div id="dynamic-text">
+						<h4 class="fade-down" id="dynamic-text">dynamical systems</h4>
+						<ul id="bio-list" style="font-size: 0.65em">
+							<li class="fragment fade-left">representations of musical <span class="bold-emph">turbulence</span></li>
+							<li class="fragment fade-left">modeling <span class="bold-emph">non-linear</span> <em>ebb + flow</em> 
+								<ul>
+									<li class="fragment fade-left">in musical time & pitch,</li>
+									<li class="fragment fade-left">in <span class="bold-emph">trajectories</span> of spatialized sounds,</li>
+									<li class="fragment fade-left">in <em>swirling, eddying</em> currents between orchestral aggregates and <span class="bold-emph">layers,</span></li>
+									<li class="fragment fade-left">or in the momentary flux of perceptual <span class="bold-emph">audio descriptors</span></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+
+				<section data-background-video="./assets/video/slow-motion-swirling-white-smoke.v03.darker.mp4" data-background-video-loop data-background-video-muted>
+							<div id="dynamic-text">
+								<h4 class="fade-down" id="dynamic-text">Quantification</h4>
+								<ul id="bio-list" style="font-size: 0.65em">
+									<li class="fragment fade-left">metrical <span class="bold-emph">discretizing</span> 
+										<ul>
+											<!-- <li class="fragment fade-left"><em>First of all... WHAT?!</em></li> -->
+											<li class="fragment fade-left">How do we <b>reduce</b> the inherent complexity of continuous and irrational <em>“fluid”</em> rhythms?</li>
+											<li class="fragment fade-left">And package them into sensible meters with <b>readable</b> subdivisions?</li>
+											<li class="fragment fade-left">While preserving the <b>integrity</b> of the original musical source material — its textural and timbral properties?</li>
+											<!-- <li class="fragment fade-left">While preserving the <b>integrity</b> of the musical material — its textural and timbral properties?</li> -->
+											<li class="fragment fade-left">This is the pursuit of a <b>practical symbolic solution</b>.</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</section>
+				</section>
+
+
+
+					<section data-background-video="./assets/video/insight.spec.loop.mov" data-background-video-loop data-background-video-muted>
+					<!-- <section data-background-gradient="radial-gradient(#F8EFE0, #888C1E)"></section> -->
+						<div>
+							<h4 class="overlay" id="hili">Transcription</h4>
+							<ul id="bio-list" style="font-size: 0.75em">
+								<li id="hili" class="fragment fade-left overlay">especially of <em>“complex sounds”</em></li>
+								<!-- <li id="hili" class="fragment fade-left overlay">i.e., sounds that are “paradoxical,” “unstable,” neither <em>harmony</em> nor <em>timbre</em> (Tristan Murail)</li> -->
+								<li id="hili" class="fragment fade-left overlay">i.e., “paradoxical” or “unstable” sounds</li>
+								<!-- <ul>
+									<li id="hili" class="fragment fade-left overlay">e.g., captured in field recordings</li>
+									<li id="hili" class="fragment fade-left overlay">e.g., obtained from FM synthesis</li>
+								</ul> -->
+									<li id="hili" class="fragment fade-left overlay">their <span class="bold-emph">mimesis</span> by acoustic instruments
+										<ul>
+											<li class="fragment fade-left"><em>a natural extension of transcribing<br>jazz + free music as a saxophonist</em></li>
+										</ul>
+									</li>
+								</ul>
+								<!-- </li> -->
+							</ul>
+						</div>
+					</section>
+						<!-- <section>
+							<div id="concerns-header">
+								<h4 id="concerns-header">Orchestration</h4>
+								<ul id="bio-list" style="font-size: 0.75em">
+							</div>
+						</section>
+						<section>
+							<div id="concerns-header">
+								<h4 id="concerns-header">Orchestration</h4>
+								<ul id="bio-list" style="font-size: 0.75em">
+										<ul>
+											<li class="fade-left">traditional, symbolic, syntactical</li>
+										</ul>
+							</div>
+						</section> -->
+						<section>
+							<div id="concerns-header">
+								<h4 id="concerns-header">Orchestration</h4>
+								<h5 id="concerns-header" style="font-size: 0.65em;" class="fragment" data-fragment-index="1">2 paradigms:</h5>
+								<ol id="bio-list" style="font-size: 0.75em">
+								<!-- <ol style="font-size: 0.75em"> -->
+									<!-- <li class="fragment fade-left"><span class="bold-emph">orchestration</span> -->
+									<li class="fragment fade-left" data-fragment-index="2">historical, <span class="bold-emph">syntactical</span>  
+										<ul style="font-size: 0.75em;">
+											<li class="fragment fade-left" data-fragment-index="3">Served Western music for generations.</li>
+											<li class="fragment fade-left" data-fragment-index="4">Primarily useful for orchestrating <b>pitched</b> musical materials, but does not properly resolve for the presence of <b>noise</b> in instrumental settings.</li>
+											<li class="fragment fade-left" data-fragment-index="5">As a reminder, white noise entered the orchestra rather late in the form of non-pitched percussion imitating Ottoman-era Janissary bands (e.g., W.A. Mozart, <em>Abduction from the Seraglio</em>, 1782)</li>
+
+											<!-- <li class="fragment fade-left" data-fragment-index="3"><em>We use highly-encoded and descriptive language used within established historical performance practices, <b>in orchestration, we lack the basic language</b> to describe our most fundamental elements...</em></li> -->
+											<!-- <li class="fragment fade-left" data-fragment-index="4"><em>such as: the genre-defining <b>“symbolic” spectral envelopes</b> used by several historical composers.</em></li> -->
+											<li class="fragment fade-left" data-fragment-index="6">Naively, we still ascribe the <b>wrong terms</b> to the effects we perceive. For example, “spacing” fails to account for any of an aggregate’s basic timbral properties.</li>
+										</ul>
+									</li>
+									<!-- <li class="fragment fade-left" data-fragment-index="6">target-based, <span class="bold-emph">algorithmic</span></li>
+									<ul>
+										<li style="font-size: 0.75em;" class="fragment fade-left" data-fragment-index="7">Uses heavy computation to find instrumental matches that are <em>“best fit”</em> to <b>imitate</b> the specific, measurable qualities of “target” source sounds (e.g., ambient field recordings).</li>
+										<li style="font-size: 0.75em;" class="fragment fade-left" data-fragment-index="8">Especially well suited to resolve <b>noisier</b> or <b>complex</b> and abstract sound sources.</li>
+										<li style="font-size: 0.75em;" class="fragment fade-left" data-fragment-index="9"><em>next slide: brief demo of an orchestration “workspace...”</em></li>
+									</ul> -->
+								</ol>	
+							<span class="fragment fade-in" data-fragment-index="4">
+								<img src="./assets/img/adler1.png" alt="adler1" width="475px" style="position: fixed; top: 200px; right: -110px; background:none; border:none; box-shadow:none;">
+								<img src="./assets/img/adler2.png" alt="adler2" width="370px" style="position: fixed; top: 370px; right: 0; background:none; border:none; box-shadow:none;">
+								<figcaption class="figcap" style="position: fixed; top: 600px; right: 50px; background:none; border:none; box-shadow:none;">Samuel Adler, The Study of Orchestration</figcaption>
+							</span>
+						</section>
+
+						<section>
+							<div id="concerns-header">
+								<h4 id="concerns-header">Orchestration</h4>
+								<h5 id="concerns-header" style="font-size: 0.65em;" class="fragment" data-fragment-index="1">2 paradigms:</h5>
+								<ol id="bio-list" style="font-size: 0.75em">
+								<!-- <ol style="font-size: 0.75em"> -->
+									<!-- <li class="fragment fade-left"><span class="bold-emph">orchestration</span> -->
+									<li class="fragment fade-left" data-fragment-index="2">historical, <span class="bold-emph">syntactical</span>  
+										<ul style="font-size: 0.75em;">
+											<!-- <li class="fragment fade-left" data-fragment-index="3">Served Western music for generations.</li>
+											<li class="fragment fade-left" data-fragment-index="4">Primarily useful for orchestrating <b>pitched</b> musical materials, but does not properly resolve <b>noise</b>.</li>
+											<li class="fragment fade-left" data-fragment-index="5">As a reminder, noise entered the orchestra rather late (e.g., Mozart, <em>Abduction from the Seraglio</em>, 1782)</li> -->
+
+											<!-- <li class="fragment fade-left" data-fragment-index="3"><em>We use highly-encoded and descriptive language used within established historical performance practices, <b>in orchestration, we lack the basic language</b> to describe our most fundamental elements...</em></li> -->
+											<!-- <li class="fragment fade-left" data-fragment-index="4"><em>such as: the genre-defining <b>“symbolic” spectral envelopes</b> used by several historical composers.</em></li> -->
+											<!-- <li class="fragment fade-left" data-fragment-index="5"><em>Naively, we still ascribe the <b>wrong terms</b> to the effects we perceive. For example, “spacing” fails to account for any of an aggregate’s basic timbral properties.</em></li> -->
+										</ul>
+									</li>
+									<li class="fragment fade-left" data-fragment-index="6">target-based, <span class="bold-emph">algorithmic</span></li>
+									<ul>
+										<li style="font-size: 0.75em;" class="fragment fade-left" data-fragment-index="7">Uses heavy computation to find instrumental combinations that are <em>“best fit”</em> to match the specific, measurable qualities of “target” source sounds (e.g., ambient field recordings <b>imitated</b> within the orchestra).</li>
+										<li style="font-size: 0.75em;" class="fragment fade-left" data-fragment-index="8">Especially well suited to resolve <b>noisier</b> or <b>complex</b> and abstract sound sources.</li>
+										<li style="font-size: 0.75em;" class="fragment fade-left" data-fragment-index="9"><em>next slide: brief demo of an orchestration “workspace...”</em></li>
+									</ul>
+								<ol>	
+							<!-- <span class="fragment fade-in" data-fragment-index="4">
+								<img src="./assets/img/adler1.png" alt="adler1" width="475px" style="position: fixed; top: 200px; right: -110px; background:none; border:none; box-shadow:none;">
+								<img src="./assets/img/adler2.png" alt="adler2" width="370px" style="position: fixed; top: 370px; right: 0; background:none; border:none; box-shadow:none;">
+								<figcaption class="figcap" style="position: fixed; top: 600px; right: 50px; background:none; border:none; box-shadow:none;">Samuel Adler, The Study of Orchestration</figcaption>
+							</span> -->
+						</section>
+
+
+
+						<section data-background-video="./assets/video/lg.ircam.orch.ex.v01.mp4">
+						</section>
+						<!-- <section>
+							<div id="concerns-header">
+								<h4 id="concerns-header">Musical Concerns</h4>
+								<p><em>More recently, these include...</em></p>	
+							</div>
+						</section> -->
+
+
+				<!-- 3. Models and Artifices -->
+				<section>
+					<div class="regular-text --onum">
+						<h4>Models + Artifices</h4>
+						<p class="fragment">In his writings, e.g., <em>“The Revolution of Complex Sounds”</em> and other articles, composer Tristan Murail elaborates on how composers work not just from <em>intuition</em> or inherited systems, but from <b>models</b> — acoustical or perceptual — in order to generate or shape musical material.</p>
+				</section>
+				<section>
+					<div class="regular-text --onum">
+						<h4>Models + Artifices</h4>
+						<p>Yet, it's difficult to know what the proper place of a <em>studio</em> environment is in Murail's work...</p>
+				</section>
+				<section>
+					<div class="regular-text --onum">
+						<h4>Models + Artifices</h4>
+						<p>What is the role of a physical studio in today's music-making? Is a studio simply a physical space? Can we accomplish on our laptops what we needed a studio for previously?</p>
+				</section>
+				<section>
+				<div class="regular-text --onum">
+					<h4>Models</h4>
+					<p class="fragment">For Murail, models are primarily acoustic, physical, or perceptual systems; e.g., the harmonic series, spectral envelopes, psychoacoustic phenomena, etc.</p>
+				</section>
+				<section>
+				<div class="regular-text --onum">
+					<h4>Models</h4>
+					<p class="fragment">For me, <em>models extend beyond acoustics</em> to include formal systems, abstract data representations, climate forecasts, architectural plans, psychological and socio-political power structures, and patterns of emergence.</p>
+				</section>
+				<section>
+					<div class="regular-text --onum">
+						<h4>Models</h4>
+						<p class="fragment"><em>My studio becomes a conceptual space</em> where models are negotiated through sound and parameter mapping.</p>
+						<p class="fragment">Models may be exploratory or generative — the “studio as a think tank” — and sometimes, a physical studio is still necessary to realize these models.</p>
+					</section>
+				<section>
+				<div class="regular-text --onum">
+					<h4>Artifices</h4>
+					<p class="fragment">For Murail, artifices are <em>creative manipulations applied to models</em>: e.g., filtering, interpolating, shifting, or transforming sonic data (from underlying systems) into “shaped” musical material.</p>
+				</section>
+				<section>
+					<div class="regular-text --onum">
+						<h4>Artifices</h4>
+						<p class="fragment">In my framing, an artifice is some kind of record, documentation, or score (traditionally notated or captured in some other way) — a tangible, performable, communicable, sometimes reproducible <em>snapshot</em>, <em>trace</em>, or <em>translation</em> of a model-based exploration.</p>
+						<p class="fragment">It’s <em>deliberately crafted</em>, but also a <em>dimensional reduction</em> of a more expansive, experimental, or emergent process.</p>
+						</p>
+					</section>
+				<section>
+					<div class="regular-text --onum">
+						<h4>Artifices</h4>
+						<p class="fragment">My conception of an artifice is a moment of clarity away from the studio space; a bridge to performers, a pedagogical object, a set of practical performance solutions — <em>the residue of action</em>.</p>
+						<p class="fragment">Where Murail’s work emphasizes sonic continuity, mine embraces <b>conceptual layering</b> and the <b>tension between a process and its artifact.</b></p>
+				</section>
+				<section>
+					<div class="regular-text --onum">
+						<h4>Model v. Artifice</h4>
+						<table class="rep-tab">
+						  <colgroup>
+							<col width="30%"/>
+							<col width="35%"/>
+							<col width="35%"/>
+						  </colgroup>
+						  <tr class="fragment fade-left">
+							<th>Concept</th>
+							<th>Murail</th>
+							<th>Goldford</th>
+						  </tr>
+						  <tr class="fragment fade-left">
+							<td><em>“Model”</em></td>
+							<td>Acoustic or <em>perceptual</em> systems: e.g., the audio spectrum</td>
+							<td>Studio <em>as a system</em>: data, analysis, process, mockup, sonic choreography in space</td>
+						  </tr>
+						  <tr class="fragment fade-left">
+							<td><em>“Artifice”</em></td>
+							<td>Transformative <em>tools</em> shaping raw sound</td>
+							<td>Score as artifact or <em>perceptual trace</em> (e.g., photo captures <em>how</em> photographer sees) — as a site of practical solutions, approximations</td>
+						  </tr>
+						  <tr class="fragment fade-left">
+							<td><em>“Studio”</em></td>
+							<td>Acoustic research lab</td>
+							<td>Abstract & exploratory space of free play with synthesis and design tools</td>
+						  </tr>
+						  <tr class="fragment fade-left">
+							<td><em>Outcome of Work</em></td>
+							<td>Sound as evolving material</td>
+							<td>Scores are <em>moments in an ongoing process</em></td>
+						  </tr>
+						  <tr class="fragment fade-left">
+							<td><em>Focus or Priority</em></td>
+							<td>on the <b>continuity</b> of sound</td>
+							<td>on the <b>translation</b> between sound, structure, performance, power</td>
+						  </tr>
+						</table>
+					  </div>
+				</section>
+
+				<!-- TRANSOM -->
+
+				<section>
+					<div style="position: fixed; left: 0px;">
+						<h4 id="concerns-header">Transom (2024)</h4>
+						<p>ensemble and electronics</p>
+					</div>
+				</section>
+
+				<section>
+					<div id="concerns-header">
+					  <h4 id="concerns-header">Themes</h4>
+					  <ul id="bio-list" style="font-size: 0.75em">
+						<li class="fragment fade-left">Inspired by Pruitt-Igoe federal housing project in St. Louis <em>(my hometown)</em> </li>
+						<li class="fragment fade-left">Contrasts so-called “modernist failure” and “postmodern excess”</li>
+					  </ul>
+					</div>
+				</section>
+
+				<section>
+					<div id="concerns-header">
+					  <h4 id="concerns-header">History + Myth</h4>
+					  <ul id="bio-list" style="font-size: 0.75em">
+						<li class="fragment fade-left">Pruitt-Igoe: Built 1954 but demolished 1972 — seen as the “death of modern architecture” (Charles Jencks)</li>
+						<li class="fragment fade-left">Cold War military testing site: zinc cadmium sulfide exposure</li>
+						<li class="fragment fade-left">Failure of the project was wrongly blamed on Black residents.</li>
+						<li class="fragment fade-left">The project’s demise is now understood as systemic neglect & racism</li>
+					  </ul>
+					</div>
+				</section>
+
+				<section>
+					<div id="concerns-header">
+						<h4 id="concerns-header">Architectural Models</h4>
+						<ul id="bio-list" style="font-size: 0.75em">
+							<li class="fragment fade-left ">Architectural geometry is used to generate the work's harmonies using <b>physical modeling synthesis</b></li>
+							<li class="fragment fade-left ">Blueprints from Pruitt-Igoe buildings (“modernist failure”) and the Frank Gehry Residence (“postmodern excess”)</li>
+							<li class="fragment fade-left ">Each set of blueprints is treated as a virtual acoustic model — a resonator.</li>
+							<li class="fragment fade-left ">Physical models of each building drives musical structure + synthesis</li>
+						</ul>
+					</div>
+				</section>
+				  
+				<section>
+					<iframe width="1120" height="630" src="https://www.youtube.com/embed/5R5IASFzTvw?si=yRUzcOrrFvX_8iMG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</section>
+
+				<section>
+					<iframe width="1120" height="630" src="https://www.youtube.com/embed/8_LleL0Q0A8?si=i8Py6D_H7ibIVRwu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</section>
+
+				<section>
+					<iframe width="1120" height="630" src="https://www.youtube.com/embed/-qcZF6v_j_k?si=S1Ie9P9pzKmyBH1R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</section>
+
+				<!-- FORMANTS -->
+
+				<section>
+					<div id="concerns-header" style="position: fixed; left: 0px;">
+						<h4 id="concerns-header">de ce qui nous amene pres de vous (2025)</h4>
+						<p>violin, cello, piano, and electronics</p>
+					</div>
+				</section>
+
+				<section>
+					<iframe width="1120" height="630" src="https://www.youtube.com/embed/Ft4-51CmHM4?si=FKtrHwHosuczUZp7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</section>
+
+				<section data-background-video="./assets/video/_actor_mockup_v01.mp4">
+					<img src="./assets/img/prosody.section.v01.png" alt="prosody" style="background:none; border:none; box-shadow:none; transform: translate(-1dvh, 0);">
+					<p style="font-size: smaller;">Vocal Formant Chords: scored for violin, cello, and piano</p>
+				</section>
+
+				<section>
+					<div id="concerns-header">
+					  <h4 id="concerns-header">Extending Expressive Range</h4>
+					  <ul id="bio-list" style="font-size: 0.75em">
+						<li class="fragment fade-left"><strong>Conventional Dynamic Range:</strong></li>
+						<li class="fragment fade-left"><em>ppp → pp → p → mp → mf → f → ff → fff</em></li>
+						<li class="fragment fade-left">Symmetrical</li>
+						<li class="fragment fade-left">Linear distribution across entire range</li>
+					  </ul>
+					</div>
+				  </section>
+
+				  <section>
+					<div id="concerns-header">
+					  <h4 id="concerns-header">My System</h4>
+					  <ul id="bio-list" style="font-size: 0.75em">
+						<li class="fragment fade-left"><em>pppppp → ppppp → pppp → ppp → pp → p → mp → mf → f → ff</em></li>
+						<li class="fragment fade-left">Asymmetrical, skewed toward quietude, extended pianissimo scale</li>
+						<li class="fragment fade-left">Treats silence and fragility as sites of <strong>maximum expressive depth</strong></li>
+						<li class="fragment fade-left">Inspired by high-resolution <em>bit depth</em> in audio production:</li> 
+						<li class="fragment fade-left">fidelity lies in the <em>quietest details</em>.</li>
+					  </ul>
+					</div>
+				  </section>
+
+				  <section>
+					<div id="concerns-header">
+					  <h4 id="concerns-header">Why This Matters</h4>
+					  <ul id="bio-list" style="font-size: 0.75em">
+						<li class="fragment fade-left">Loudness <strong>distorts timbre</strong> and destroys <em>timbral fusion</em>.</li>
+						<li class="fragment fade-left">Quietness reveals the <strong>interior identity</strong> of each tone and blended aggregate.</li>
+						<li class="fragment fade-left">Prioritizes <strong>blend over individual presence</strong> in ensemble textures.</li>
+						<li class="fragment fade-left">Rewards performer <em>sensitivity</em>, not their <em>projection</em> across the proscenium.</li>
+					  </ul>
+					</div>
+				  </section>
+
+				  <section>
+					<div id="concerns-header">
+					  <h4 id="concerns-header">Listening Mindset</h4>
+					  <ul id="bio-list" style="font-size: 0.75em">
+						<li class="fragment fade-left">Instead of asking: <em>“How <b>present</b> can <b>you</b> be?”</em></li>
+						<li class="fragment fade-left">I’m asking: <em>“How softly can you shape a harmonic cloud — without puncturing it?”</em></li>
+					  </ul>
+					</div>
+				  </section>
+				  
+				  
+				  
+				  
+
+
+				<!-- BROAD APPLICABILITY ACROSS FIELDS -->
+
+
+				<section>
+					<div id="concerns-header" style="position: fixed; left: 0px;">
+						<h4 id="concerns-header">Broad Applicability</h4>
+						<p>the wider appeal of these tools (artifices?)</p>
+					</div>
+				</section>
+
+				<section>
+					<div id="concerns-header">
+					  <h4 id="concerns-header">Formant Synthesis</h4>
+					  <ul id="bio-list" style="font-size: 0.75em">
+						<li class="fragment fade-left ">Models resonant frequencies of the vocal tract to produce vowel-like timbres</li>
+						<li class="fragment fade-left ">Used to structure gestures around vowel formants and explore speech research</li>
+						<li class="fragment fade-left ">Bridges voice science, vocal music pedagogy, and audio engineering</li>
+						<li class="fragment fade-left ">Singer-songwriters, producers, and engineers can use vowel formants to fine-tune their EQ, mix clarity, and balance</li>
+					  </ul>
+					</div>
+				  </section>
+
+				  <section>
+					<div id="concerns-header">
+					  <h4 id="concerns-header">Spectral Analysis & Resynthesis</h4>
+					  <ul id="bio-list" style="font-size: 0.75em">
+						<li class="fragment fade-left ">Breaks down sound into frequency components for compositional reuse</li>
+						<li class="fragment fade-left ">Used for high-resolution modeling of life-like sound sources</li>
+						<li class="fragment fade-left ">Enables realistic timbres as well as glitch-friendly timbres</li>
+						<li class="fragment fade-left ">Crosses into jazz, electronica, as well as academic research</li>
+					  </ul>
+					</div>
+				  </section>
+				  
+				  <section>
+					<div id="concerns-header">
+					  <h4 id="concerns-header">Audio Feature Extraction + Machine Learning</h4>
+					  <ul id="bio-list" style="font-size: 0.75em">
+						<li class="fragment fade-left ">Extracts perceptual and mathematical characteristics (e.g., brightness, spectral centroid)</li>
+						<li class="fragment fade-left ">Guides composition with perceptual data</li>
+						<li class="fragment fade-left ">Drives recommendation engines, adaptive game scores, and AI production tools</li>
+						<li class="fragment fade-left ">Forms the backbone of smart EQ, intelligent mixing and mastering tools</li>
+					  </ul>
+					</div>
+				  </section>
+
+				  <section>
+					<div id="concerns-header">
+					  <h4 id="concerns-header">Interactive Environments</h4>
+					  <ul id="bio-list" style="font-size: 0.75em">
+						<li class="fragment fade-left ">Visual programming languages like MaxMSP for real-time sound/media interaction</li>
+						<li class="fragment fade-left ">Used for experimental works and intermedia performance environments</li>
+						<li class="fragment fade-left ">Supports custom tools for improvisation, installation art, live visuals</li>
+						<li class="fragment fade-left ">Bridges DSP, gestural mapping, and creative coding</li>
+					  </ul>
+					</div>
+				  </section>
+
+				  <section>
+					<div id="concerns-header">
+					  <h4 id="concerns-header">Audio-Visual Tools</h4>
+					  <ul id="bio-list" style="font-size: 0.75em">
+						<li class="fragment fade-left ">Jitter, Processing, and TouchDesigner link sound and image in real time</li>
+						<li class="fragment fade-left ">Used to create audiovisual analogs between structure, gesture, and form</li>
+						<li class="fragment fade-left ">Extends sonic material into visual modalities for immersive performance</li>
+						<li class="fragment fade-left ">Widely used in video art, AR/VR/XR</li>
+					  </ul>
+					</div>
+				  </section>
+
+				  <section>
+					<div id="concerns-header">
+					  <h4 id="concerns-header">Modular Synthesis</h4>
+					  <ul id="bio-list" style="font-size: 0.75em">
+						<li class="fragment fade-left ">Patchable modules allow for flexible, nonlinear signal paths</li>
+						<li class="fragment fade-left ">Users now can start learning modular virutally before investing in expensive hardware</li>
+						<li class="fragment fade-left ">Bespoke sound design and exploratory instrument-building</li>
+						<li class="fragment fade-left ">Cross-genre appeal: pop, ambient, techno, sound art</li>
+						<li class="fragment fade-left ">Embodied, intuitive interface supports curiosity-driven exploration</li>
+						<li class="fragment fade-left ">Teaches us to work within limits</li>
+					  </ul>
+					</div>
+				  </section>
+
+				  <section>
+					<div id="concerns-header">
+					  <h4 id="concerns-header">Audio Spatialization</h4>
+					  <ul id="bio-list" style="font-size: 0.75em">
+						<li class="fragment fade-left ">Techniques for positioning/moving sound in physical or virtual space</li>
+						<li class="fragment fade-left ">Used in gesture-driven immersive setups</li>
+						<li class="fragment fade-left ">Binaural production now enables widespread, affordable immersive listening systems</li>
+						<li class="fragment fade-left ">Core to VR/AR/XR, cinematic sound design with Dolby Atmos, museum installations, site-specific works</li>
+						<li class="fragment fade-left ">Bridges musical form with perception, architecture, and accessibility technologies</li>
+					  </ul>
+					</div>
+				  </section>
+				  
+				  
+				  
+				  
+				  
+
+
+
+				<!-- 4. Presentation Repertoire -->
+				<section>
+					<div class="regular-text --onum">
+						<h4>Repertoire</h4>
+						<table class="rep-tab">
+							<colgroup>
+								<col width="60%"/>
+								<col width="5%"/>
+								<col width="30%"/>
+								<col width="5%"/>
+								<col width="10%"/>
+							</colgroup>
+							<tr class="fragment fade-left">
+								<td><em><b>Au-dessus du carrelage de givre</b> (“Above a Frost-Tiled Floor”)</em></td>
+								<td>(2019)</td>
+								<td>tenor, electronics, video</td>
+								<td>9'</td>
+								<td>Benjamin Athanase, IRCAM</td>
+							</tr>
+							<tr class="fragment fade-left">
+								<td><em><b>Tell Me, How Is It That I Poisoned Your Soup?</b></em></td>
+								<td>(2019)</td>
+								<td>ensemble + electronics</td>
+								<td>11'</td>
+								<td>Talea Ensemble</td>
+							</tr>
+							<tr class="fragment fade-left">
+								<td><em><b>Mauvaise foi</b></em></td>
+								<td>(2022)</td>
+								<td>soprano, ensemble, electronics, and reactive lighting</td>
+								<td>11'</td>
+								<td>Alice Teyssier, International Contemporary Ensemble</td>
+							</tr>
+							<tr class="fragment fade-left">
+								<td><em><b>Audiendum Extimate</b></em></td>
+								<td>(2018)</td>
+								<td>2 perc., 2 pno., transducers</td>
+								<td>11'</td>
+								<td>Yarn/Wire</td>
+							</tr>
+							<tr class="fragment fade-left">
+								<td><em><b>Mémoire involontaire</b></em></td>
+								<td>(2017)</td>
+								<td>string quartet</td>
+								<td>16'</td>
+								<td>JACK Quartet</td>
+							</tr>
+						</table>
+					</div>
+				</section>
+
+				<section>
+					<div style="position: fixed; left: 0px;">
+						<p><em><b>Au-dessus du carrelage de givre</b></em> (2019)</p>
+						<p>tenor, electronics, video</p>
+					</div>
+				</section>
+
+				<section>
+					<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/368597289?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Au-dessus du carrelage de givre"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+				</section>
+
+				<section>
+					<div style="position: fixed; left: 0px;">
+						<p><em><b>Tell Me, How Is It That I Poisoned Your Soup?</b></em> (2019)</p>
+						<p>ensemble + electronics</p>
+					</div>
+				</section>
+
+				<section>
+					<iframe width="1120" height="630" src="https://www.youtube.com/embed/qlVW64OmEWg?si=b2U5iIVpmWkiO22C" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</section>
+
+				<section>
+					<div style="position: fixed; left: 0px;">
+						<p><em><b>Mauvaise foi</b></em> (2022)</p>
+						<p>soprano, ensemble, electronics, and reactive lighting</p>
+					</div>
+				</section>
+
+				<section>
+					<iframe width="1120" height="630" src="https://www.youtube.com/embed/h-wAw-UWYtg?si=eEQ8HG_aMxKzcN-s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>				
+				</section>
+
+				<section>
+					<div style="position: fixed; left: 0px;">
+						<p><em><b>Audiendum Extimate</b></em> (2018)</p>
+						<p>2 perc., 2 pno., transducers</p>
+					</div>
+				</section>
+
+				<section>
+					<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/285737927?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Audiendum Extimate"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+				</section>
+
+				<section>
+					<div style="position: fixed; left: 0px;">
+						<p><em><b>Mémoire involontaire</b></em> (2017)</p>
+						<p>string quartet</p>
+					</div>
+				</section>
+
+				<section>
+					<iframe width="1120" height="630" src="https://www.youtube.com/embed/IdNrij6QK3A?si=Y4MZWp8pzcToPNOg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</section>
+
+
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+				<!--
+        reveal.js-remote:
+        The next two dependencies are required!
+        If you do not serve the presentations from the presentations/-folder
+        give the full servername here, e.g.
+
+        https://presentations.jowisoftware.de/soket.io/socket.io.js and
+        https://presentations.jowisoftware.de/_remote/plugin.js_
+   		-->
+		   <script src="../socket.io/socket.io.js"></script>
+		   <script src="../_remote/plugin.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes,
+					// RevealRemote,
+					// { src: 'https://cdn.pubnub.com/pubnub-4.4.0.min.js', async: true },
+					// { src: 'plugin/pubnub-remote-control.js', async: true } 
+				]
+
+				// remote: {
+				// 	// enable remote control
+				// 	remote: true,
+
+				// 	// enable multiplexing
+				// 	//multiplex: true,
+
+				// 	// server address
+				// 	// change this if you do not serve the presentation from the same domain
+				// 	// example: https://presentations.jowisoftware.de
+				// 	//server: window.location.protocol + "//" + window.location.host + "/",
+
+				// 	// path to socket.io
+				// 	// change this if the basepath of the server is not "/"
+				// 	//path: "/socket.io",
+
+				// 	// url of the presentation to share
+				// 	//shareUrl: window.location.href
+        		// }
+			});
+			// window.deck = deck;
+		</script>
+	</body>
+</html>
