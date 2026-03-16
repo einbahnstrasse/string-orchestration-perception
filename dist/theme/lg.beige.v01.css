@@ -1167,3 +1167,222 @@ section {
   margin-top: -30px;
   /* opacity: 0.8; */
 }
+
+
+/* new additions for orchestration */
+
+.simulation-slide .pg-layout{
+	display:grid;
+	grid-template-columns: 1.2fr 1fr;
+	gap:40px;
+	width:100%;
+	align-items:start;
+}
+
+.simulation-slide .pg-text{
+	width:100%;
+  font-size: 60%;
+}
+
+.simulation-slide .pg-images{
+	display:flex;
+	flex-direction:column;
+	gap:0px;
+	width:100%;
+}
+
+/* .simulation-slide .pg-image-block{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+} */
+
+.simulation-slide .pg-image-block{
+	display:flex;
+	flex-direction:column;
+	align-items:flex-start;
+}
+
+.simulation-slide .pg-caption{
+	font-size:0.3em;
+	text-align:left;
+	margin-top:0px;
+  margin-bottom:0px;
+}
+
+section.simulation-slide{
+	width:100%;
+	max-width:none;
+}
+
+section.simulation-slide .pg-layout{
+	grid-template-columns: 1fr 420px;
+}
+
+.simulation-slide .pg-images.pg-images-wide{
+	width:600px;
+	max-width:none;
+}
+section.simulation-slide .pg-layout.pg-layout-wide{
+	grid-template-columns: 1fr 500px;
+}
+
+/* =========================================
+   CUSTOM ACADEMIC FOOTER
+   Uses same typographic feel as your
+   working slide-number rules
+   ========================================= */
+
+.talk-footer {
+  position: fixed !important;
+  left: 20px !important;
+  bottom: 12px !important;
+  z-index: 35 !important;
+
+  display: inline-flex !important;
+  align-items: end !important;
+  justify-content: flex-start !important;
+  gap: 1rem !important;
+
+  width: auto !important;
+  max-width: calc(100vw - 40px) !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  pointer-events: none !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.talk-footer,
+.talk-footer *,
+.talk-footer a,
+.talk-footer span,
+.talk-footer div {
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  text-shadow: none !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.talk-footer-left,
+.talk-footer-center,
+.talk-footer-right {
+  margin: 0 !important;
+  /* margin-bottom: 20px !important; */
+  padding: 0 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  color: rgba(0,0,0,0.68) !important;
+  font-family: Georgia, Times, serif !important;
+  font-size: 12px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-variant-numeric: oldstyle-nums proportional-nums !important;
+  font-feature-settings: "onum" 1, "pnum" 1 !important;
+}
+
+.talk-footer-center {
+  max-width: 30vw !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.talk-footer-right,
+#footer-slide-number {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 0.15em !important;
+  color: #777 !important;
+  font-family: Georgia, Times, serif !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  font-variant-numeric: oldstyle-nums proportional-nums !important;
+  font-feature-settings: "onum" 1, "pnum" 1 !important;
+}
+
+.reveal .slide-number {
+  display: none !important;
+}
+
+.talk-footer-left::after,
+.talk-footer-center::after {
+  content: "|";
+  margin-left: 1rem;
+  color: rgba(0,0,0,0.45);
+}
+
+/* Reset theme interference on footer children */
+.talk-footer,
+.talk-footer *,
+.talk-footer a,
+.talk-footer span,
+.talk-footer div {
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  text-shadow: none !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Left + center footer text */
+.talk-footer-left,
+.talk-footer-center,
+.talk-footer-right {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  color: rgba(0,0,0,0.68) !important;
+  font-family: Georgia, "Times New Roman", Times, serif !important;
+  font-size: 12px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+}
+
+/* Make the center behave nicely */
+.talk-footer-center {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  text-align: center !important;
+}
+
+/* Right side number styling — matches the look you liked */
+.talk-footer-right,
+#footer-slide-number {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 0.15em !important;
+
+  font-family: Georgia, Times, serif !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  color: #777 !important;
+
+  /* old-style numerals */
+  font-variant-numeric: oldstyle-nums proportional-nums !important;
+  font-feature-settings: "onum" 1, "pnum" 1 !important;
+}
+
+/* Optional: give the whole footer old-style figures too */
+.talk-footer-left,
+.talk-footer-center {
+  font-variant-numeric: oldstyle-nums proportional-nums !important;
+  font-feature-settings: "onum" 1, "pnum" 1 !important;
+}
+
+/* Hide Reveal's built-in number if it still appears anywhere */
+.reveal .slide-number {
+  display: none !important;
+}
