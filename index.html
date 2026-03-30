@@ -591,45 +591,45 @@
 						<div>
 							<div style="font-size: 60%;">
 								<p>
-									Create <em>divisi</em> by <strong>distributing</strong> players across lines, 
+									Create <em>divisi</em> by <strong>distributing</strong> players across melodic lines, 
 									managing <strong>volume</strong> & <strong>intensity</strong>:
 								</p>
 
-								<table style="width:100%; margin-top:1em; border-collapse: collapse;">
+								<table class="fragment" style="width:100%; margin-top:1em; border-collapse: collapse;" data-fragment-index="1">
 									<tr>
-										<th style="text-align:left;">Method</th>
-										<th style="text-align:left;">What players do</th>
-										<th style="text-align:left;">Notation</th>
+										<th style="width:20%; text-align:left;">method</th>
+										<th style="width:40%; text-align:left;">what players do</th>
+										<th style="width:40%; text-align:left;">notation</th>
+									</tr>
+
+									<tr class="fragment" data-fragment-index="1">
+										<td><strong>By Desks (stands)</strong></td>
+										<td>Each stand divides: outer player on upper note, inner takes lower</td>
+										<td>2 voices on 1 staff (<em>div.</em> or <em>div. a 2</em>)</td>
 									</tr>
 
 									<tr class="fragment">
-										<td><strong>By desk (stands)</strong></td>
-										<td>Each stand divides: outer player takes upper note(s), inner takes lower</td>
-										<td>2 voices on 1 staff (<em>div</em>.)</td>
+										<td><strong>Split in Half</strong></td>
+										<td>Half the section plays; inner<br>stand partners silent <em>(tacet)</em></td>
+										<td><em>Half, la metà, la moitié, die Hälfte</em></td>
 									</tr>
 
 									<tr class="fragment">
-										<td><strong>Half split</strong></td>
-										<td>Half the section plays; inner<br>stand partners tacit</td>
-										<td><em>Half, la moitié, die Hälfte</em></td>
+										<td><strong>Expanded<br>(3+ groups)</strong></td>
+										<td>Section divided into >2 groups; fewer players per line</td>
+										<td><em>div. a 3</em> or <em>a 4+</em> on a single staff, or additional staves <em>“Divide by stand”</em></td>
 									</tr>
 
 									<tr class="fragment">
-										<td><strong>Expanded divisions (3+ groups)</strong></td>
-										<td>Section divided into multiple groups; fewer players per line</td>
-										<td><em>div. a 3</em>, or additional staves</td>
-									</tr>
-
-									<tr class="fragment">
-										<td><strong>Double stops<br>(within players)</strong></td>
+										<td><strong>Double Stops<br>(<em>non divisi</em>)</strong></td>
 										<td>Each player performs multiple notes simultaneously</td>
-										<td>Multiple noteheads on 1 stem</td>
+										<td>Multiple noteheads on 1 stem marked <em>non divisi</em></td>
 									</tr>
 
 									<tr class="fragment">
-										<td><strong>Reduced players (soli divisi)</strong></td>
-										<td>Only a subset of the section plays,<br>then divides among lines</td>
-										<td>Marked “soli” (e.g., <em>8 soli divisi</em>)</td>
+										<td><strong>Chamber<br>(<em>soli divisi</em>)</strong></td>
+										<td>A subset of the section plays,<br>then divides among given lines</td>
+										<td>Marked <em>“soli”</em> (e.g., <em>8 soli divisi</em>)</td>
 									</tr>
 								</table>
 							</div>
@@ -642,19 +642,30 @@
 						<h4 style="text-align:left;">La Traviata, mm. 1–7</h4>
 						<figure id="koechlin">
 							<img src="./assets/img/traviata.opening.png" alt="trav opening">
+
+						<!-- MINI AUDIO PLAYER -->
+						<div class="mini-audio-player" style="position: fixed; right: 10px;">
+							<button class="mini-audio-button" onclick="toggleAudio(this)">▶</button>
+
+							<div class="mini-audio-progress">
+							<div class="mini-audio-progress-fill"></div>
+							</div>
+
+							<audio src="./assets/audio/traviata.mm1-25.wav"></audio>
+						</div>
 						</figure>
 						<div>
 							<div class="regular-text" style="font-size: 70%;">
 								<p class="fragment">Overture opens with a 4-part chorale harmonization</p>
 								<p class="fragment">scored for 1st and 2nd violins</p>
-								<p class="fragment"><em>8 soli divisi</em> — 8 players from 1sts and 8 players from 2nds</p>
-								<p class="fragment">4 independent voices, each played by 4 players</p>
+								<p class="fragment"><em>8 soli divisi</em> — 8 players from 1sts + 8 players from 2nds</p>
+								<p class="fragment">4 independent voices, each one executed by 4 players</p>
 								<p class="fragment">Perceptual result:</p>
 								<ul>
-									<li class="fragment"><strong style="color:#ff6b6b;">dense</strong></li>
-									<li class="fragment"><em>proximate / intimate</em></li>
-									<li class="fragment"><em>foregrounded / concentrated</em></li>
-									<li class="fragment">with 4 on a part, still avoids sounding <em>thin</em></li>
+									<li class="fragment"><strong style="color:#ff6b6b;">more dense:</strong> ↓ <em>low</em> <strong>volume</strong> (size) and, perhaps, ↑ <em>high</em> <strong>intensity</strong> (loudness)</li>
+									<li class="fragment">sounds more <em>proximate</em> or <em>intimate</em>; nuanced cues from individual playing</li>
+									<li class="fragment">spatially, seems more <em>concentrated</em> and <em>in the foreground</em></li>
+									<li class="fragment">with 4 on each part, this passage avoids sounding too <em>thin</em></li>
 								</ul>
 							</div>
 						</div>
@@ -665,19 +676,30 @@
 					<div>
 						<h4 style="text-align:left;">La Traviata, Tutti (m. 8+)</h4>
 						<figure id="koechlin">
-							<img src="./assets/img/traviata.m9.png" alt="trav opening">
+							<img src="./assets/img/traviata.m9.png" alt="trav m. 8">
+
+						<!-- MINI AUDIO PLAYER -->
+						<div class="mini-audio-player" style="position: fixed; right: 10px;">
+							<button class="mini-audio-button" onclick="toggleAudio(this)">▶</button>
+
+							<div class="mini-audio-progress">
+							<div class="mini-audio-progress-fill"></div>
+							</div>
+
+							<audio src="./assets/audio/traviata.mm8.wav"></audio>
+						</div>
 						</figure>
 						<div class="regular-text">
 							<div style="font-size: 70%;">
-								<p class="fragment">1sts & 2nds return to <em>Tutti</em> unision melodies,<br>joined by viola & cello carrying harmonization</p>
+								<p class="fragment">From m. 8, 1sts & 2nds return to <em>Tutti</em> unision<br>lines, joined by viola & cello harmonies</p>
 								<p class="fragment"><em>What’s actually going on here?...</em></p>
 								<ul>
 									<li class="fragment">↑ more violinists <em>on each melodic part</em></li>
 									<li class="fragment">introduces subtle chorus-like delays<br>and microtuning differences</li>
 									<ul>
-										<li class="fragment">pyschoacoustic cues: <em>“This mass is larger...”</em></li>
+										<li class="fragment">pyschoacoustic cues: <em>“This mass is now larger...”</em></li>
 									</ul>
-									<li class="fragment">impression of a receded, more generic sound</li>
+									<li class="fragment">impression of a <strong>receded</strong>, more <strong>generic</strong> sound</li>
 									<ul>
 										<li class="fragment">↑ increased conditions for <strong>fullness</strong> and <strong>blend</strong> <em>(Koechlin)</em></li>
 										<li class="fragment">e.g., violins can blend better with violas and cellos</li>
@@ -689,7 +711,108 @@
 					</div>
 				</section>
 
+				<section class="--onum">
+					<div>
+						<h4 style="text-align:left;">La Traviata, m. 18</h4>
+						<figure id="koechlin">
+							<img src="./assets/img/traviata.m18.png" alt="trav opening" style="width: 400px; top: 250px;">
+						<!-- MINI AUDIO PLAYER -->
+						<div class="mini-audio-player" style="position: fixed; right: 10px;">
+							<button class="mini-audio-button" onclick="toggleAudio(this)">▶</button>
+
+							<div class="mini-audio-progress">
+							<div class="mini-audio-progress-fill"></div>
+							</div>
+
+							<audio src="./assets/audio/traviata.mm18.wav"></audio>
+						</div>
+						</figure>
+						<div class="regular-text">
+							<div style="font-size: 70%;">
+								<p class="fragment" data-fragment-index="1">At m. 18, the unison melody is made<br><em>even more</em> <strong style="color:#43d37b;">transparent...</strong></p>
+								<ul>
+									<li class="fragment" data-fragment-index="2">1st violin melody is joined by viola & cello</li>
+									<li class="fragment" data-fragment-index="3">viola & cello no longer <em>harmonizing</em></li>
+									<li class="fragment" data-fragment-index="4">↑ more cellists as they move to <em>Tutti</em></li>
+								</ul>
+							</div>
+						</div>
+					</div>
 				</section>
+
+				<section class="--onum">
+					<div>
+						<h4 style="text-align:left;">La Traviata, m. 18</h4>
+						<figure id="koechlin">
+							<img src="./assets/img/traviata.m18.png" alt="trav opening" style="width: 400px; top: 250px;">
+						</figure>
+						<div class="regular-text">
+							<div style="font-size: 70%;">
+								<p>And, as a result...</p>
+		
+									<li class="fragment" data-fragment-index="6">1st violins, viola, & cello <strong style="color:#43d37b;"><em>fuse</em></strong> into their<br> own perceptual <strong>layer</strong> (yes, you can clap...)</li>
+										<img class="fragment" data-fragment-index="6" src="./assets/img/wow-surprised.gif" alt="wow!" style="position: fixed; right: 10px; width: 300px; top: 50%;">
+									<li class="fragment" data-fragment-index="7">despite the melody scored in 3 octaves...</li>
+									<li class="fragment" data-fragment-index="8">Doubling in octaves <em>enhances</em> <strong style="color:#43d37b;">transparency</strong><br>by promoting <em>fullness</em> and <em>volume</em>:</li>
+									<li class="fragment" data-fragment-index="9">it’s more mass spread out across multiple registers</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="--onum">
+					<div>
+						<h4 style="text-align:left;">La Traviata, m. 18</h4>
+						<figure id="koechlin">
+							<img src="./assets/img/traviata.m18.png" alt="trav opening" style="width: 400px; top: 250px;">
+						</figure>
+						<div class="regular-text">
+							<div style="font-size: 70%;">
+								<p class="fragment">This is not a coincidence; violins don’t just<br>miraculously <strong style="color:#43d37b;"><em>fuse</em></strong> with cellos and violas...</p>
+								<p class="fragment">It’s the result of Verdi’s careful <em>preparation</em> of musical material: the management of size (volume), intensity (loudness), fullness, and transparency.</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+
+				</section>
+
+				<section>
+					<div class="regular-text --onum" style="position: relative;">
+						
+						<h4>Divisi vs. Tutti?</h4>
+
+						<!-- Mentimeter embed -->
+						<div class="menti-shell">
+						<iframe 
+							class="menti-frame"
+							sandbox="allow-popups allow-scripts allow-same-origin allow-presentation" 
+							allowfullscreen="true"
+							src="https://www.mentimeter.com/app/presentation/blzdbvxq3zg4y7rv4czma1nqpb875rr9/embed">
+						</iframe>
+						</div>
+
+						<!-- QR code block -->
+						<div class="menti-qr">
+						<img src="./assets/img/mentimeter_qr_transparent.png">
+						<div>menti.com</div>
+						<div>9869 4477</div>
+						<!-- MINI AUDIO PLAYER -->
+						<div class="mini-audio-player">
+							<button class="mini-audio-button" onclick="toggleAudio(this)">▶</button>
+
+							<div class="mini-audio-progress">
+							<div class="mini-audio-progress-fill"></div>
+							</div>
+
+							<audio src="./assets/audio/traviata.mm1-25.wav"></audio>
+						</div>
+						</div>
+					</div>
+				</section>
+
 
 
 
