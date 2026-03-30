@@ -1419,13 +1419,13 @@ section.simulation-slide .pg-layout.pg-layout-wide{
 }
 
 /* QR code block */
-.menti-qr {
+/* .menti-qr {
   position: absolute;
   top: 40%; 
   right: -25px;
 
   text-align: center;
-  font-size: 0.5em;
+  font-size: 0.5em; */
   /* line-height: 1.2; */
 
   /* padding: 6px; */
@@ -1433,6 +1433,21 @@ section.simulation-slide .pg-layout.pg-layout-wide{
 
   /* optional subtle background for readability */
   /* background: rgba(255, 255, 255, 0.85); */
+/* } */
+
+.menti-qr {
+  position: absolute;
+  top: 40%;
+  right: -25px;
+
+  text-align: center;
+  font-size: 0.5em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px; 
+  /* controls spacing between QR + text + player */
 }
 
 /* QR image */
@@ -1441,4 +1456,50 @@ section.simulation-slide .pg-layout.pg-layout-wide{
   height: auto;
   display: block;
   margin: 0 auto 4px auto;
+}
+
+/* ------------ */
+/* AUDIO PLAYER */
+/* ------------ */
+
+.mini-audio-player {
+  width: 70px;   
+  height: 70px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* no background so it feels integrated */
+  background: none;
+  padding: 0;
+}
+
+.mini-audio-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #111;
+  color: rgb(237 124 117);
+  /* 238 124 117 */
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.mini-audio-progress {
+  width: 100%;
+  height: 4px;
+  background: #ccc;
+  border-radius: 2px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.mini-audio-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: rgb(237 124 117);
 }
