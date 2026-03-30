@@ -1503,3 +1503,16 @@ section.simulation-slide .pg-layout.pg-layout-wide{
   height: 100%;
   background: rgb(237 124 117);
 }
+
+#koechlin {
+  position: fixed; 
+  top: 20%; 
+  right: 0px;
+}
+
+#koechlin img {
+  width: 300px;
+  background: none; 
+  border: none; 
+  box-shadow: none;
+}
