@@ -1505,14 +1505,20 @@ section.simulation-slide .pg-layout.pg-layout-wide{
 }
 
 #koechlin {
-  position: fixed; 
-  top: 20%; 
+  position: absolute;
+  top: 0%;
   right: 0px;
 }
 
 #koechlin img {
   width: 300px;
-  background: none; 
-  border: none; 
+  background: none;
+  border: none;
   box-shadow: none;
+}
+
+/* position: fixed inside Reveal.js slides anchors to the transformed slide,
+   not the viewport — causing a jump on slide entry. Use absolute instead. */
+.reveal .slides section figure#gma {
+  position: absolute !important;
 }
